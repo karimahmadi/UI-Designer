@@ -1,0 +1,8 @@
+{
+  "url": "http://10.39.41.141:8080/auth/",
+  "realm": "tjb",
+  "resource": "tjb-apps",
+  "auth-server-url": "http://10.39.41.141:8080/auth/",
+  "ssl-required": "external",
+  "returnUrlGlobal": "http://10.39.41.141/#/home"
+}

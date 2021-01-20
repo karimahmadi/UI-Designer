@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- The first thing in any HTML file should be the charset -->
+  <meta charset="utf-8">
+
+  <!-- Make the page mobile compatible -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Allow installing the app to the homescreen -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="icon" href="/favicon.ico"/>
+  <title>سامانه اعتبار اسنادی </title>
+  <script>
+    // get the string following the ?
+    var query = window.location.search.substring(1)
+
+    // is there anything there ?
+    if (query.length) {
+      var arr = query.split("=");
+      localStorage.setItem(arr[0], arr[1]);
+      // are the new history methods available ?
+      if (window.history != undefined && window.history.pushState != undefined) {
+        // if pushstate exists, add a new state to the history, this changes the url without reloading the page
+
+        window.history.pushState({}, document.title, window.location.pathname);
+      }
+    }
+  </script>
+</head>
+
+<body dir="rtl">
+<!-- Display a message if JS has been disabled on the browser. -->
+<noscript>If you're seeing this message, that means
+  <strong>JavaScript has been disabled on your browser</strong>, please
+  <strong>enable JS</strong> to make this app work.
+</noscript>
+
+<!-- The app hooks into this div -->
+<div id="app" style="max-height: 100%;"></div>
+<span style="position:fixed; left:150px; bottom: 0;
+    color: #fff; font-size: 18px;line-height: 35px;
+    font-family: 'B Yekan', Yekan;">نسخه :</span>
+<span style="position:fixed; left:50px; bottom: 0;
+    color: #fff; font-size: 18px;line-height: 35px;
+    font-family: 'B Yekan', Yekan;">
+                buildnumber
+            </span>
+<!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically injects all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this file. Don't add any assets here! (Check out webpack.dev.babel.js and webpack.prod.babel.js if you want to know more) -->
+</body>
+
+</html>

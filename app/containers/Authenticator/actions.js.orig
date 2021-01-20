@@ -1,0 +1,50 @@
+/*
+ *
+ * Authenticator actions
+ *
+ */
+
+import {
+<<<<<<< HEAD
+  AUTHENTICATE_SUCCESS,
+  AUTHENTICATE_FAILED,
+  GET_AUTHENTICATION_TOKEN,
+  USER_LOGGED_IN,
+=======
+  AUTHENTICATE,
+  AUTHENTICATE_SUCCESS,
+  AUTHENTICATE_FAILED,
+>>>>>>> dcb2316c6309cb4700759cf6730f913448c91a36
+} from './constants';
+
+export function authenticate() {
+  return {
+    type: AUTHENTICATE,
+  };
+}
+export function authenticatedSuccess(token) {
+  return {
+    type: AUTHENTICATE_SUCCESS,
+    token,
+  };
+}
+export function authenticatedFailed(error) {
+  return {
+    type: AUTHENTICATE_FAILED,
+    error,
+<<<<<<< HEAD
+  };
+}
+export function loadAuthenticationToken(token) {
+  return {
+    type: GET_AUTHENTICATION_TOKEN,
+    token,
+  };
+}
+export function userLoggedIn() {
+  return {
+    type: USER_LOGGED_IN,
+=======
+>>>>>>> dcb2316c6309cb4700759cf6730f913448c91a36
+  };
+}
