@@ -12,23 +12,7 @@
   <meta name="mobile-web-app-capable" content="yes">
 
   <link rel="icon" href="/favicon.ico"/>
-  <title>سامانه اعتبار اسنادی </title>
-  <script>
-    // get the string following the ?
-    var query = window.location.search.substring(1)
-
-    // is there anything there ?
-    if (query.length) {
-      var arr = query.split("=");
-      localStorage.setItem(arr[0], arr[1]);
-      // are the new history methods available ?
-      if (window.history != undefined && window.history.pushState != undefined) {
-        // if pushstate exists, add a new state to the history, this changes the url without reloading the page
-
-        window.history.pushState({}, document.title, window.location.pathname);
-      }
-    }
-  </script>
+  <title>designer</title>
 </head>
 
 <body dir="rtl">

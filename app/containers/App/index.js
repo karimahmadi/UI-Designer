@@ -8,56 +8,24 @@
  */
 
 import React from 'react';
-import { Section } from '@tatareact/core/Section';
-import { Grid } from '@tatareact/core/Grid';
-import { v4 as uuid } from 'uuid';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import SchemaForm from 'components/SchemaForm';
+import {Schema} from './Schema';
+import ToolBox from 'components/ToolBox';
+import Grid from 'components/Grid';
 
-function SchemaForm({ schema }) {
-  const mapper = {
-    section: Section,
-    grid: Grid,
-  };
 
-  return (
-    schema.childs &&
-    schema.childs.map(item => {
-      console.log('item.type:', item.type);
-      const Field = mapper[item.type];
-      console.log('Field:', Field);
-      if (!Field) {
-        return null;
-      }
-      return (
-        <Field key={uuid()} {...item.properties}>
-          {SchemaForm({ schema: item })}
-        </Field>
-      );
-    })
-  );
-}
 function App() {
-  const schema = {
-    childs: [
-      {
-        type: 'section',
-        properties: {
-          title: 'عنوان',
-        },
-        childs: [
-          {
-            type: 'grid',
-            properties: {
-              container: true,
-            },
-          },
-        ],
-      },
-    ],
-  };
   return (
-    <div>
-      <SchemaForm schema={schema} />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <ToolBox/>            
+      {/* <SchemaForm schema={Schema} /> */}
+      <Grid container>
+        <Grid item xs={6}>test</Grid>
+        <Grid item xs={6}>test</Grid>
+      </Grid>
+    </DndProvider>
   );
 }
 
