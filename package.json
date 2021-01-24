@@ -1,10 +1,10 @@
 {
-  "name": "ui-lo-accounting",
+  "name": "ui-designer",
   "version": "0.0.1",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "http://vcs.tiddev.com/projects/LC/repos/ui-lo-accounting/"
+    "url": "http://vcs.tiddev.com/projects/LC/repos/ui-designer/"
   },
   "engines": {
     "npm": ">=5",
