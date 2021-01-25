@@ -2,9 +2,9 @@ import React from 'react';
 import { ItemTypes } from 'components/ItemTypes';
 import { useDrag } from 'react-dnd';
 
-function Grid() {
+function GridItem() {
   const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.GRID, container: true },
+    item: { type: ItemTypes.GRIDITEM, item: true, xs: 2 },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -20,9 +20,9 @@ function Grid() {
         cursor: 'move',
       }}
     >
-      grid
+      grid Item
     </div>
   );
 }
 
-export default Grid;
+export default GridItem;

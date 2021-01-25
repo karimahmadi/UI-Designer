@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from './Input';
+import InputLabel from './InputLabel';
 import Grid from './Grid';
+import GridItem from './GridItem';
 
 const Container = styled.div`
   position: absolute;
@@ -13,17 +15,13 @@ const Container = styled.div`
   padding: 0.5rem 0.5rem;
 `;
 
-const Item = styled.div`
-  border: 1px solid black;
-  margin: 0.5rem 0.5rem;
-  text-align: center;
-`;
-
 function ToolBox() {
   return (
     <Container>
-      <Input />
       <Grid />
+      <GridItem />
+      <Input />
+      <InputLabel />
     </Container>
   );
 }

@@ -3,8 +3,8 @@ import { useDrop } from 'react-dnd';
 import { ItemTypes } from 'components/ItemTypes';
 
 function DndForm({ children, name, updateSchema, ...other }) {
-  const accept = [ItemTypes.INPUT, ItemTypes.GRID];
-  const [{ isOverCurrent, connectDropTarget }, drop] = useDrop({
+  const accept = [ItemTypes.GRID];
+  const [{ isOverCurrent }, drop] = useDrop({
     accept,
     drop: (item, monitor) => {
       updateSchema({ name }, monitor.getItem());
@@ -19,14 +19,14 @@ function DndForm({ children, name, updateSchema, ...other }) {
       {...other}
       ref={drop}
       style={{
-        border: '1px solid red',
+        border: '1px solid black',
         padding: '5px',
         position: 'absolute',
         left: '0',
         right: '100px',
         top: '0',
         bottom: '0',
-        backgroundColor: isOverCurrent ? 'yellow' : 'gray',
+        backgroundColor: isOverCurrent ? 'yellow' : 'lightgray',
       }}
     >
       {children}

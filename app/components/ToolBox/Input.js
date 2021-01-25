@@ -15,7 +15,7 @@ function Input() {
       ref={drag}
       style={{
         opacity: isDragging ? 0.5 : 1,
-        fontSize: 25,
+        fontSize: 18,
         fontWeight: 'bold',
         cursor: 'move',
       }}

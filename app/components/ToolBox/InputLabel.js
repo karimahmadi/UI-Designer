@@ -2,9 +2,9 @@ import React from 'react';
 import { ItemTypes } from 'components/ItemTypes';
 import { useDrag } from 'react-dnd';
 
-function Grid() {
+function InputLabel() {
   const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.GRID, container: true },
+    item: { type: ItemTypes.TEXT, value: 'Label' },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -20,9 +20,9 @@ function Grid() {
         cursor: 'move',
       }}
     >
-      grid
+      InputLabel
     </div>
   );
 }
 
-export default Grid;
+export default InputLabel;

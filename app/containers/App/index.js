@@ -12,44 +12,59 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import SchemaForm from 'components/SchemaForm';
 import ToolBox from 'components/ToolBox';
-import Grid from 'components/Grid';
+import Properties from 'components/Properties';
 import produce from 'immer';
 import { v4 as uuid } from 'uuid';
 import { Schema } from './Schema';
 
 function App() {
   const [schema, setSchema] = useState(Schema);
-  const findByName = (name, schema) => {
-    if (schema.name === name) return schema;
-    schema.childs.forEach(item => {
-      const res = findByName(name, item);
-      if (res) return res;
-    });
 
-    return false;
+  const findByName = (name, parent) => {
+    if (parent.name === name) return parent;
+    let result = false;
+    if (parent.childs)
+      for (let i = 0; i < parent.childs.length; i += 1) {
+        const item = parent.childs[i];
+        const res = findByName(name, item);
+        if (res) {
+          result = res;
+          break;
+        }
+      }
+    return result;
   };
+
   const updateSchema = (dropTarget, dragItem) => {
-    console.log('dropTarget:', dropTarget);
-    console.log('dragItem:', dragItem);
     const { name } = dropTarget;
     const newSchema = produce(schema, draft => {
       const parent = findByName(name, draft);
       if (parent) {
-        dragItem.name = uuid();
-        parent.childs.push(dragItem);
+        parent.childs = parent.childs || [];
+        const { type, value, ...properties } = dragItem;
+        parent.childs.push({ type, name: uuid(), value, properties });
       }
     });
 
+    console.log('newSchema:', newSchema);
     setSchema(newSchema);
   };
+
+  const [focusItem, setFocusItem] = useState('');
+  const changeFocus = name => {
+    setFocusItem(name);
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <ToolBox />
-      <SchemaForm mainSchema={schema} updateSchema={updateSchema} />
-      {/* <Grid container> */}
-      {/* <Grid item xs={6}>test</Grid> */}
-      {/* <Grid item xs={6}>test</Grid> */}
-      {/* </Grid> */}
+      <SchemaForm
+        mainSchema={schema}
+        updateSchema={updateSchema}
+        changeFocus={changeFocus}
+        focusItem={focusItem}
+      />
+      <Properties focusItem={findByName(focusItem, schema)} />
     </DndProvider>
   );
 }
