@@ -25,7 +25,12 @@ function SchemaForm({ mainSchema, updateSchema }) {
       return null;
     }
     return (
-      <Field key={uuid()} {...schema.properties} updateSchema={updateSchema}>
+      <Field
+        key={uuid()}
+        {...schema.properties}
+        name={schema.name}
+        updateSchema={updateSchema}
+      >
         {schema.childs && schema.childs.map(item => renderSchema(item))}
       </Field>
     );

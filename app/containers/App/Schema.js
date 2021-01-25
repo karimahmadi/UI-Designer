@@ -1,6 +1,6 @@
 export const Schema = {
   type: 'form',
-  uniqueName: 'form001',
+  name: 'form001',
   properties: {},
   childs: [],
 };

@@ -2,12 +2,12 @@ import React from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from 'components/ItemTypes';
 
-function DndForm({ children, updateSchema, ...other }) {
+function DndForm({ children, name, updateSchema, ...other }) {
   const accept = [ItemTypes.INPUT, ItemTypes.GRID];
-  const [{ isOverCurrent }, drop] = useDrop({
+  const [{ isOverCurrent, connectDropTarget }, drop] = useDrop({
     accept,
     drop: (item, monitor) => {
-      updateSchema(monitor.getDropResult(), monitor.getItem());
+      updateSchema({ name }, monitor.getItem());
     },
     collect: monitor => ({
       isOverCurrent: monitor.isOver({ shallow: true }),

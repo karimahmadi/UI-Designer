@@ -4,16 +4,15 @@ import Grid from '@material-ui/core/Grid';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from 'components/ItemTypes';
 
-function DndGrid({ children, updateSchema, ...other }) {
+function DndGrid({ children, name, updateSchema, ...other }) {
   const accept = [ItemTypes.INPUT, ItemTypes.GRID];
   const [{ isOverCurrent }, drop] = useDrop({
     accept,
-    drop: (item, monitor) =>
-      monitor.didDrop()
-        ? console.log('drop done before')
-        : console.log('drop done :', item),
+    drop: (item, monitor) => {
+      updateSchema({ name }, monitor.getItem());
+    },
     collect: monitor => ({
-      isOverCurrent: !!monitor.isOver({ shallow: true }),
+      isOverCurrent: monitor.isOver({ shallow: true }),
     }),
   });
 

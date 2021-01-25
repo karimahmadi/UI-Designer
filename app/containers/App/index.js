@@ -13,15 +13,34 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import SchemaForm from 'components/SchemaForm';
 import ToolBox from 'components/ToolBox';
 import Grid from 'components/Grid';
+import produce from 'immer';
+import { v4 as uuid } from 'uuid';
 import { Schema } from './Schema';
 
 function App() {
   const [schema, setSchema] = useState(Schema);
-  const updateSchema = (x,y) => {
-    console.log('updateSchema x:', x);
-    console.log('updateSchema y:', y);
-    // schema.childs.push(item);
-    // setSchema({ ...schema });
+  const findByName = (name, schema) => {
+    if (schema.name === name) return schema;
+    schema.childs.forEach(item => {
+      const res = findByName(name, item);
+      if (res) return res;
+    });
+
+    return false;
+  };
+  const updateSchema = (dropTarget, dragItem) => {
+    console.log('dropTarget:', dropTarget);
+    console.log('dragItem:', dragItem);
+    const { name } = dropTarget;
+    const newSchema = produce(schema, draft => {
+      const parent = findByName(name, draft);
+      if (parent) {
+        dragItem.name = uuid();
+        parent.childs.push(dragItem);
+      }
+    });
+
+    setSchema(newSchema);
   };
   return (
     <DndProvider backend={HTML5Backend}>
