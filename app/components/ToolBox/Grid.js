@@ -4,7 +4,7 @@ import { useDrag } from 'react-dnd';
 
 function Grid() {
   const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.GRID, container: true },
+    item: { type: ItemTypes.GRID, container: true, item:false },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),

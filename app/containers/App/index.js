@@ -55,6 +55,19 @@ function App() {
     setFocusItem(name);
   };
 
+  const updateProperties = (focusItem,props) =>{
+    const { name } = focusItem;
+    const newSchema = produce(schema, draft => {
+      const parent = findByName(name, draft);
+      if (parent) {
+        parent.properties = {...parent.properties,...props};
+      }
+    });
+
+    console.log('newSchema:', newSchema);
+    setSchema(newSchema);
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <ToolBox />
@@ -64,7 +77,7 @@ function App() {
         changeFocus={changeFocus}
         focusItem={focusItem}
       />
-      <Properties focusItem={findByName(focusItem, schema)} />
+      <Properties focusItem={findByName(focusItem, schema)} updateProperties={updateProperties}/>
     </DndProvider>
   );
 }
