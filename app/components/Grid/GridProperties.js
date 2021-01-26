@@ -9,7 +9,8 @@ const GridProperties = ({ focusItem, onChange }) => {
 
   useEffect(() => {
     console.log(focusItem);
-    setState({ ...state, ...focusItem.properties });
+    const {container=false,item=false,xs=false,sm=false,md=false,lg=false} = focusItem.properties;
+    setState({ ...state, container,item,xs,sm,md,lg});
   }, [focusItem]);
 
   const handleContainerChange = () => {
@@ -35,6 +36,16 @@ const GridProperties = ({ focusItem, onChange }) => {
     const newState = {
       ...state,
       [name]: 1 * event.target.value,
+    };
+    setState(newState);
+    onChange(newState);
+  };
+
+  const handleLeftChange = event => {
+    const { name } = event.target;
+    const newState = {
+      ...state,
+      left: event.target.checked,
     };
     setState(newState);
     onChange(newState);
@@ -123,6 +134,14 @@ const GridProperties = ({ focusItem, onChange }) => {
           </Grid>
         </React.Fragment>
       )}
+
+      <Grid item xs={6} left>
+        align left
+      </Grid>
+      <Grid item xs={6} left>
+        <Checkbox checked={state.left} onChange={handleLeftChange} />
+      </Grid>
+
     </Grid>
   );
 };

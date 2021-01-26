@@ -23,41 +23,42 @@ function DndGrid({
 
   const [{ isOverCurrent }, drop] = useDrop({
     accept,
-    hover: (item, monitor) => {
-      // if (!ref.current) {
-      //   return;
-      // }
-      // const dragName = item.name;
-      // const hoverName = name;
-      // // Don't replace items with themselves
-      // if (dragName === hoverName) {
-      //   return;
-      // }
-      // // Determine rectangle on screen
-      // const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      // // Get vertical middle
-      // const hoverMiddleY =
-      //   (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      // // Determine mouse position
-      // const clientOffset = monitor.getClientOffset();
-      // // Get pixels to the top
-      // const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-      // // Only perform the move when the mouse has crossed half of the items height
-      // // When dragging downwards, only move when the cursor is below 50%
-      // // When dragging upwards, only move when the cursor is above 50%
-      //
-      // // Dragging downwards
-      // if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-      //   return;
-      // }
-      // // Dragging upwards
-      // if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      //   return;
-      // }
+    // hover: (item, monitor) => {
+    //   if (!ref.current) {
+    //     return;
+    //   }
+    //   const dragName = item.name;
+    //   const hoverName = name;
+    //   // Don't replace items with themselves
+    //   if (dragName === hoverName) {
+    //     return;
+    //   }
+    //   // Determine rectangle on screen
+    //   const hoverBoundingRect = ref.current.getBoundingClientRect();
+    //   // Get vertical middle
+    //   const hoverMiddleY =
+    //     (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+    //   // Determine mouse position
+    //   const clientOffset = monitor.getClientOffset();
+    //   // Get pixels to the top
+    //   const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+    //   // Only perform the move when the mouse has crossed half of the items height
+    //   // When dragging downwards, only move when the cursor is below 50%
+    //   // When dragging upwards, only move when the cursor is above 50%
+      
+    //   console.log(hoverClientY , hoverMiddleY);
+    //   // Dragging downwards
+    //   if (hoverClientY < hoverMiddleY) {
+    //     return;
+    //   }
+    //   // Dragging upwards
+    //   if (hoverClientY > hoverMiddleY) {
+    //     return;
+    //   }
 
-      // Time to actually perform the action
-      moveItem(dragName, hoverName);
-    },
+    //   // Time to actually perform the action
+    //   moveItem(dragName, hoverName);
+    // },
     drop: (item, monitor) => {
       updateSchema({ name }, monitor.getItem());
     },
@@ -76,18 +77,28 @@ function DndGrid({
   drag(drop(ref));
 
   const [focus, setFocus] = useState(focusItem === name);
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     setFocus(focusItem === name);
   }, [focusItem]);
 
-  const handleFocus = () => {
-    console.log('Focus');
-  };
+
   const handleClick = e => {
     e.stopPropagation();
     setFocus(true);
     changeFocus(name);
+  };
+
+  const handleMouseOver = e => {
+    e.stopPropagation();
+    e.preventDefault();
+    setHover(true);
+  };
+  const handleMouseOut = e => {
+    e.stopPropagation();
+    e.preventDefault();
+    setHover(false);
   };
   return (
     <Grid
@@ -98,11 +109,12 @@ function DndGrid({
         border: !focus ? '1px solid black' : '2px dashed red',
         padding: '5px',
         minHeight: '25px',
-        backgroundColor: isOverCurrent ? 'yellow' : 'lightgray',
+        backgroundColor: isOverCurrent ? 'yellow' : !hover?'lightgray':'yellow',
         opacity: isDragging ? 0 : 1,
-      }}
-      onFocus={handleFocus}
+      }}      
       onClick={handleClick}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
       {children}
     </Grid>

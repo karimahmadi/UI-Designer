@@ -6,7 +6,7 @@ import Input from 'components/Input';
 import { InputLabel } from '@tatareact/core/InputLabel';
 import { v4 as uuid } from 'uuid';
 
-function SchemaForm({ mainSchema, updateSchema, changeFocus, focusItem }) {
+function SchemaForm({ mainSchema, updateSchema, changeFocus, focusItem,moveItem }) {
   const mapper = {
     section: Section,
     grid: Grid,
@@ -29,6 +29,7 @@ function SchemaForm({ mainSchema, updateSchema, changeFocus, focusItem }) {
         updateSchema={updateSchema}
         changeFocus={changeFocus}
         focusItem={focusItem}
+        moveItem={moveItem}
       >
         {schema.childs && schema.childs.map(item => renderSchema(item))}
       </Field>

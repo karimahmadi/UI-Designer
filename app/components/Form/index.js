@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from 'components/ItemTypes';
 
-function DndForm({ children, name, updateSchema, ...other }) {
+function DndForm({ children, name, updateSchema,focusItem,changeFocus,  ...other }) {
   const accept = [ItemTypes.GRID];
   const [{ isOverCurrent }, drop] = useDrop({
     accept,
@@ -14,12 +14,24 @@ function DndForm({ children, name, updateSchema, ...other }) {
     }),
   });
 
+  const [focus, setFocus] = useState(focusItem === name);
+
+  useEffect(() => {
+    setFocus(focusItem === name);
+  }, [focusItem]);
+
+  const handleClick = e => {
+    e.stopPropagation();
+    setFocus(true);
+    changeFocus(name);
+  };
+
   return (
     <div
       {...other}
       ref={drop}
       style={{
-        border: '1px solid black',
+        border: !focus ? '1px solid black' : '2px dashed red',
         padding: '5px',
         position: 'absolute',
         left: '0',
@@ -28,6 +40,7 @@ function DndForm({ children, name, updateSchema, ...other }) {
         bottom: '0',
         backgroundColor: isOverCurrent ? 'yellow' : 'lightgray',
       }}
+      onClick={handleClick}
     >
       {children}
     </div>

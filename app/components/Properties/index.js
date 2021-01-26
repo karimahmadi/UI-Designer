@@ -38,7 +38,8 @@ function Properties({ focusItem, updateProperties,deleteFocusItem }) {
   };
 
   const handleChange = props => {
-    setProps({ ...props });
+    // setProps({ ...props });
+    updateProperties(focusItem, props);
   };
 
   const handleDeleteClick = () => {

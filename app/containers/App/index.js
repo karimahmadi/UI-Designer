@@ -51,19 +51,20 @@ function App() {
   };
 
   const moveItem = (drag, drop) => {
-    // const newSchema = produce(schema, draft => {
-    //   const dropParent = findParentByName(drop, draft);
-    //   const dragParent = findParentByName(drag, draft);
-    //
-    // });
-    // setSchema(newSchema);
+    console.log(drag, drop);
+    const newSchema = produce(schema, draft => {
+      const dropParent = findParentByName(drop, draft);
+      const dragParent = findParentByName(drag, draft);
+      if(dropParent.name===dragParent.name){
+        const dragItem = findByName(drag,dragParent);
+        const childs = dragParent.childs.filter(item => item.name !== drag);
+        dragParent.childs = childs;
+        const dropIndex = dragParent.childs.findIndex(item=>item.name===drop);
+        dragParent.childs.splice(dropIndex,0,dragItem);
+      }
+    });
+    setSchema(newSchema);
   };
-
-  // const moveDragBeforeDrop = (drag, drop, parent) => {
-  //   const dragItem = findByName(drag, parent);
-  //   const dropIndex = parent.childs.findIndex(item => item.name === drop);
-  //   parent.childs.splice(dropIndex, 0, dragItem);
-  // };
 
   const updateMoveSchema = (dropTarget, dragItem) => {
     const { name: dropName } = dropTarget;
@@ -96,8 +97,8 @@ function App() {
         const parent = findByName(name, draft);
         if (parent) {
           parent.childs = parent.childs || [];
-          const { type, value, ...properties } = dragItem;
-          parent.childs.push({ type, name: uuid(), value, properties });
+          const { type, value, childs=[],properties } = dragItem;
+          parent.childs.push({ type, name: uuid(), value, properties,childs });
         }
       });
 
