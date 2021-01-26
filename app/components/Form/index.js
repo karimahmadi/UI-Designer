@@ -23,7 +23,7 @@ function DndForm({ children, name, updateSchema, ...other }) {
         padding: '5px',
         position: 'absolute',
         left: '0',
-        right: '100px',
+        right: '150px',
         top: '0',
         bottom: '0',
         backgroundColor: isOverCurrent ? 'yellow' : 'lightgray',

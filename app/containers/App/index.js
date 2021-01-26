@@ -35,19 +35,74 @@ function App() {
     return result;
   };
 
-  const updateSchema = (dropTarget, dragItem) => {
-    const { name } = dropTarget;
-    const newSchema = produce(schema, draft => {
-      const parent = findByName(name, draft);
-      if (parent) {
-        parent.childs = parent.childs || [];
-        const { type, value, ...properties } = dragItem;
-        parent.childs.push({ type, name: uuid(), value, properties });
+  const findParentByName = (name, parent) => {
+    let result = false;
+    if (parent.childs)
+      for (let i = 0; i < parent.childs.length; i += 1) {
+        const item = parent.childs[i];
+        if (item.name === name) return parent;
+        const res = findParentByName(name, item);
+        if (res) {
+          result = res;
+          break;
+        }
       }
+    return result;
+  };
+
+  const moveItem = (drag, drop) => {
+    // const newSchema = produce(schema, draft => {
+    //   const dropParent = findParentByName(drop, draft);
+    //   const dragParent = findParentByName(drag, draft);
+    //
+    // });
+    // setSchema(newSchema);
+  };
+
+  // const moveDragBeforeDrop = (drag, drop, parent) => {
+  //   const dragItem = findByName(drag, parent);
+  //   const dropIndex = parent.childs.findIndex(item => item.name === drop);
+  //   parent.childs.splice(dropIndex, 0, dragItem);
+  // };
+
+  const updateMoveSchema = (dropTarget, dragItem) => {
+    const { name: dropName } = dropTarget;
+    const { name: dragName } = dragItem;
+    if (dropName === dragName) return;
+    const newSchema = produce(schema, draft => {
+      const dragParent = findParentByName(dragName, draft);
+
+      const dropItem = findByName(dropName, draft);
+      const oldItem = findByName(dragName, dragParent);
+      /* delete old */
+      const childs = dragParent.childs.filter(
+        item => item.name !== oldItem.name,
+      );
+      dragParent.childs = [...childs];
+
+      /* add new */
+      dropItem.childs = dropItem.childs || [];
+      dropItem.childs.push(oldItem);
     });
 
-    console.log('newSchema:', newSchema);
     setSchema(newSchema);
+  };
+
+  const updateSchema = (dropTarget, dragItem) => {
+    if (dragItem.name) updateMoveSchema(dropTarget, dragItem);
+    else {
+      const { name } = dropTarget;
+      const newSchema = produce(schema, draft => {
+        const parent = findByName(name, draft);
+        if (parent) {
+          parent.childs = parent.childs || [];
+          const { type, value, ...properties } = dragItem;
+          parent.childs.push({ type, name: uuid(), value, properties });
+        }
+      });
+
+      setSchema(newSchema);
+    }
   };
 
   const [focusItem, setFocusItem] = useState('');
@@ -55,16 +110,28 @@ function App() {
     setFocusItem(name);
   };
 
-  const updateProperties = (focusItem,props) =>{
+  const updateProperties = (focusItem, props) => {
     const { name } = focusItem;
     const newSchema = produce(schema, draft => {
       const parent = findByName(name, draft);
       if (parent) {
-        parent.properties = {...parent.properties,...props};
+        parent.properties = { ...parent.properties, ...props };
       }
     });
 
-    console.log('newSchema:', newSchema);
+    setSchema(newSchema);
+  };
+
+  const deleteFocusItem = focusItem => {
+    const { name } = focusItem;
+    const newSchema = produce(schema, draft => {
+      const parent = findParentByName(name, draft);
+      if (parent) {
+        const childs = parent.childs.filter(item => item.name !== name);
+        parent.childs = [...childs];
+      }
+    });
+
     setSchema(newSchema);
   };
 
@@ -76,8 +143,13 @@ function App() {
         updateSchema={updateSchema}
         changeFocus={changeFocus}
         focusItem={focusItem}
+        moveItem={moveItem}
       />
-      <Properties focusItem={findByName(focusItem, schema)} updateProperties={updateProperties}/>
+      <Properties
+        focusItem={findByName(focusItem, schema)}
+        updateProperties={updateProperties}
+        deleteFocusItem={deleteFocusItem}
+      />
     </DndProvider>
   );
 }

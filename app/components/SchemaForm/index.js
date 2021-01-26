@@ -10,7 +10,6 @@ function SchemaForm({ mainSchema, updateSchema, changeFocus, focusItem }) {
   const mapper = {
     section: Section,
     grid: Grid,
-    griditem: Grid,
     input: Input,
     inputLabel: InputLabel,
     form: Form,

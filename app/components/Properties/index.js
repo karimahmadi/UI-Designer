@@ -1,7 +1,7 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Button } from '@tatareact/core/Button';
 import GridProperties from '../Grid/GridProperties';
-import { Button } from  '@tatareact/core/Button';
 
 const Container = styled.div`
   direction: ltr;
@@ -15,22 +15,34 @@ const Container = styled.div`
 `;
 
 const ApplyButton = styled(Button)`
-    position: absolute !important;
-    bottom: 0;
-    right: 0;
-    padding: 0 !important;
-    margin: 5px !important;
+  position: absolute !important;
+  bottom: 0;
+  right: 0;
+  padding: 0 !important;
+  margin: 5px !important;
 `;
 
-function Properties({ focusItem,updateProperties }) {
+const DeleteButton = styled(Button)`
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  padding: 0 !important;
+  margin: 5px !important;
+  background-color: red !important;
+`;
 
-  const [props,setProps]=useState({...focusItem.properties});
+function Properties({ focusItem, updateProperties,deleteFocusItem }) {
+  const [props, setProps] = useState({ ...focusItem.properties });
   const handleApplyClick = () => {
-    updateProperties(focusItem,props);
+    updateProperties(focusItem, props);
   };
 
-  const handleChange = (props) => {
-    setProps({...props});
+  const handleChange = props => {
+    setProps({ ...props });
+  };
+
+  const handleDeleteClick = () => {
+    deleteFocusItem(focusItem);
   };
 
   switch (focusItem.type) {
@@ -39,6 +51,7 @@ function Properties({ focusItem,updateProperties }) {
         <Container>
           <GridProperties focusItem={focusItem} onChange={handleChange} />
           <ApplyButton onClick={handleApplyClick}>Apply</ApplyButton>
+          <DeleteButton onClick={handleDeleteClick}>Delete</DeleteButton>
         </Container>
       );
     default:
