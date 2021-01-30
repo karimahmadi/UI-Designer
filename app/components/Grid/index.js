@@ -1,93 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import {Grid} from '@tatareact/core/Grid';
 import Grid from '@material-ui/core/Grid';
-import { useDrop, useDrag } from 'react-dnd';
-import { ItemTypes } from 'components/ItemTypes';
+import {Resizable} from 'react-resizable'; 
 
 function DndGrid({
   children,
   name,
   container,
-  item,
-  focusItem,
-  changeFocus,
+  item,    
   updateSchema,
-  moveItem,
   ...other
 }) {
-  const ref = useRef(null);
-  const accept = [ItemTypes.GRID];
-  if (item) {
-    [ItemTypes.INPUT, ItemTypes.TEXT].forEach(it => accept.push(it));
-  }
-
-  const [{ isOverCurrent }, drop] = useDrop({
-    accept,
-    // hover: (item, monitor) => {
-    //   if (!ref.current) {
-    //     return;
-    //   }
-    //   const dragName = item.name;
-    //   const hoverName = name;
-    //   // Don't replace items with themselves
-    //   if (dragName === hoverName) {
-    //     return;
-    //   }
-    //   // Determine rectangle on screen
-    //   const hoverBoundingRect = ref.current.getBoundingClientRect();
-    //   // Get vertical middle
-    //   const hoverMiddleY =
-    //     (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-    //   // Determine mouse position
-    //   const clientOffset = monitor.getClientOffset();
-    //   // Get pixels to the top
-    //   const hoverClientY = clientOffset.y - hoverBoundingRect.top;
-    //   // Only perform the move when the mouse has crossed half of the items height
-    //   // When dragging downwards, only move when the cursor is below 50%
-    //   // When dragging upwards, only move when the cursor is above 50%
-      
-    //   console.log(hoverClientY , hoverMiddleY);
-    //   // Dragging downwards
-    //   if (hoverClientY < hoverMiddleY) {
-    //     return;
-    //   }
-    //   // Dragging upwards
-    //   if (hoverClientY > hoverMiddleY) {
-    //     return;
-    //   }
-
-    //   // Time to actually perform the action
-    //   moveItem(dragName, hoverName);
-    // },
-    drop: (item, monitor) => {
-      updateSchema({ name }, monitor.getItem());
-    },
-    collect: monitor => ({
-      isOverCurrent: monitor.isOver({ shallow: true }),
-    }),
-  });
-
-  const [{ isDragging }, drag] = useDrag({
-    item: { type: ItemTypes.GRID, children, container, item, name, ...other },
-    collect: monitor => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  });
-
-  drag(drop(ref));
-
-  const [focus, setFocus] = useState(focusItem === name);
-  const [hover, setHover] = useState(false);
-
-  useEffect(() => {
-    setFocus(focusItem === name);
-  }, [focusItem]);
-
+  
+  const [hover,setHover]=useState(false);
 
   const handleClick = e => {
     e.stopPropagation();
-    setFocus(true);
-    changeFocus(name);
+
   };
 
   const handleMouseOver = e => {
@@ -100,17 +29,16 @@ function DndGrid({
     e.preventDefault();
     setHover(false);
   };
-  return (
-    <Grid
+  const renderGrid = () => {
+    return (
+      <Grid
       container={container}
       {...other}
-      ref={ref}
       style={{
-        border: !focus ? '1px solid black' : '2px dashed red',
+        border:  '1px solid black',
         padding: '5px',
         minHeight: '25px',
-        backgroundColor: isOverCurrent ? 'yellow' : !hover?'lightgray':'yellow',
-        opacity: isDragging ? 0 : 1,
+        backgroundColor: !hover?'lightgray':'yellow',
       }}      
       onClick={handleClick}
       onMouseOver={handleMouseOver}
@@ -118,8 +46,44 @@ function DndGrid({
     >
       {children}
     </Grid>
-  );
+    );
+  };
+
+  if(item)
+  return 
+    <Resizable height={20} width={500} >
+           <Grid
+      container={container}
+      {...other}
+      style={{
+        border:  '1px solid black',
+        padding: '5px',
+        minHeight: '25px',
+        backgroundColor: !hover?'lightgray':'yellow',
+      }}      
+      onClick={handleClick}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+    >
+      {children}
+    </Grid>
+    </Resizable>;
+
+  return       <Grid
+  container={container}
+  {...other}
+  style={{
+    border:  '1px solid black',
+    padding: '5px',
+    minHeight: '25px',
+    backgroundColor: !hover?'lightgray':'yellow',
+  }}      
+  onClick={handleClick}
+  onMouseOver={handleMouseOver}
+  onMouseOut={handleMouseOut}
+>
+  {children}
+</Grid>;
 }
 
-// React.forwardRef((props, ref) => <Component {...props} forwardedRef={ref} />);
 export default DndGrid;
