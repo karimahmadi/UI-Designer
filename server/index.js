@@ -1,6 +1,7 @@
 /* eslint consistent-return:0 import/order:0 */
 
 const express = require('express');
+const cors = require('cors');
 const logger = require('./logger');
 
 const argv = require('./argv');
@@ -9,6 +10,8 @@ const setup = require('./middlewares/frontendMiddleware');
 // const isDev = process.env.NODE_ENV !== 'production';
 const { resolve } = require('path');
 const app = express();
+
+// app.use(cors());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
