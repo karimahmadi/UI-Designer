@@ -7,98 +7,33 @@
  *
  */
 
-import React, { useState } from 'react';
-import SwaggerParser from '@apidevtools/swagger-parser';
-import SchemaForm from 'components/SchemaForm';
-import produce from 'immer';
-import faker from 'faker';
-import { v4 as uuid } from 'uuid';
-import { Schema } from './Schema';
-import TreeNode from './TreeNode';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  const [schema, setSchema] = useState(Schema);
+  const [data, setData] = useState({});
 
-  SwaggerParser.dereference(
-    'http://192.168.101.171:8000/v2/api-docs',
-    (err, api) => {
-      if (err) {
-        console.error('err:',err);
-
-      } else {
-        console.log(
-          'API name: %s, Version: %s',
-          api.info.title,
-          api.info.version,
-        );
-        console.log('api:', api);
-      }
-    },
-  );
-
-  faker.locale = "fa";
-  console.log(faker.name.findName());
-  console.log(faker.internet.email());
-  console.log(faker.helpers.createCard());
-
-  const findByName = (name, parent) => {
-    if (parent.name === name) return parent;
-    let result = false;
-    if (parent.childs)
-      for (let i = 0; i < parent.childs.length; i += 1) {
-        const item = parent.childs[i];
-        const res = findByName(name, item);
-        if (res) {
-          result = res;
-          break;
-        }
-      }
-    return result;
-  };
-
-  const findParentByName = (name, parent) => {
-    let result = false;
-    if (parent.childs)
-      for (let i = 0; i < parent.childs.length; i += 1) {
-        const item = parent.childs[i];
-        if (item.name === name) return parent;
-        const res = findParentByName(name, item);
-        if (res) {
-          result = res;
-          break;
-        }
-      }
-    return result;
-  };
-
-  const updateSchema = (dropTarget, dragItem) => {
-    if (dragItem.name) updateMoveSchema(dropTarget, dragItem);
-    else {
-      const { name } = dropTarget;
-      const newSchema = produce(schema, draft => {
-        const parent = findByName(name, draft);
-        if (parent) {
-          parent.childs = parent.childs || [];
-          const { type, value, childs = [], properties } = dragItem;
-          parent.childs.push({ type, name: uuid(), value, properties, childs });
-        }
-      });
-
-      setSchema(newSchema);
-    }
-  };
-
-  // return (
-  //     <SchemaForm
-  //       mainSchema={schema}
-  //       updateSchema={updateSchema}
-  //     />
-  // );
+  useEffect(() => {
+    axios.get('/log').then(
+      res => {
+        setData(res.data);
+      },
+      err => {
+        console.log('err:', err);
+      },
+    );
+  }, []);
 
   return (
     <div style={{ margin: '10px 10px' }}>
-      <TreeNode title="root" />
+      {Object.keys(data).map(url => (
+        <ul key={url}>
+          <div>{url}</div>
+          {data[url].map((msg, index) => (
+            <li key={`${msg}-${index}`}>{msg}</li>
+          ))}
+        </ul>
+      ))}
     </div>
   );
 }

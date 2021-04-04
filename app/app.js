@@ -6,20 +6,15 @@
  */
 
 // Needed for redux-saga es6 generator support
-import "core-js";
-import "regenerator-runtime/runtime";
+import 'core-js';
+import 'regenerator-runtime/runtime';
 
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
-import { LoadingProvider } from '@tatareact/core/TejaratLoading';
 // Import root app
 
-// Import Language Provider
-import LanguageProvider from 'containers/LanguageProvider';
 
 // Load the favicon and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -28,19 +23,15 @@ import 'file-loader?name=.htaccess!./.htaccess';
 
 /* eslint-enable import/no-unresolved, import/extensions */
 
-import { ConnectedRouter } from 'connected-react-router';
 import App from './containers/App';
-import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
 
 // Create redux store with history
-const initialState = {};
-const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
-const render = messages => {
-  ReactDOM.render(<App/>, MOUNT_NODE);
+const render = () => {
+  ReactDOM.render(<App />, MOUNT_NODE);
 };
 
 if (module.hot) {

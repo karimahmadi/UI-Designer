@@ -1,0 +1,2414 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "سرویسهای مربوط به سپام",
+        "version": "1.0.1",
+        "title": "سرویس سپام"
+    },
+    "host": "192.168.101.171",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "other-bank-message-controller",
+            "description": "سرویس نمایش پیام سایر بانک ها"
+        },
+        {
+            "name": "request-inquiry-controller",
+            "description": "Request Inquiry Controller"
+        }
+    ],
+    "paths": {
+        "/rest/sepam/other-bank/700/init/param": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "پیش نمایش صفحه ایجاد پیام 730 سایر بانک ها",
+                "operationId": "createConfirm730MsgInitParamUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "otherBankMsgId",
+                        "in": "query",
+                        "description": "otherBankMsgId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Confirm730InitParamResponse»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/700/show/message": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "نمایش پیام گشایش سایر بانک ها",
+                "operationId": "showOtherBankMsg700UsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "otherBankMsgId",
+                        "in": "query",
+                        "description": "otherBankMsgId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ShowOtherBankMsg700Response»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/707/show/message": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "نمایش پیام 707 سایر بانک ها",
+                "operationId": "showOtherBankMsg707UsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "otherBankMsgId",
+                        "in": "query",
+                        "description": "otherBankMsgId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ShowOtherBankMsg707Response»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/730/create/confirm/message": {
+            "post": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "ایجاد پیام تایید 730 در پاسخ پیام های دیگر",
+                "operationId": "createConfirm730MsgUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "request",
+                        "description": "request",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ابجکت%20درخواست%20ایجاد%20پیام%20730"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/edited/message": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "گزارش پیام های اصلاحیه سایر بانک ها",
+                "operationId": "editedOtherBankMsgUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "otherBankMsgId",
+                        "in": "query",
+                        "description": "otherBankMsgId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EditedOtherBankMsgResponse»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/edited/show": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "نمایش پیام اصلاحیه سایر بانک ها",
+                "operationId": "showEditedMessageUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "otherBankMsgId",
+                        "in": "query",
+                        "description": "otherBankMsgId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ShowOtherBankMsg707Response»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/get/init": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "سرویس تکمیل اطلاعات اولیه گزارش پیام های گشایش سایر بانک ها",
+                "operationId": "getDisplayOtherBankMessageInitUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«OtherBankMsgInitResponse»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/other-bank/search/receive": {
+            "get": {
+                "tags": [
+                    "other-bank-message-controller"
+                ],
+                "summary": "گزارش پیام های گشایش سایر بانک ها",
+                "operationId": "getSearchReceiveOtherBankMsgUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "query",
+                        "description": "شناسه شعبه",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "receiveDateFrom",
+                        "in": "query",
+                        "description": "تاریخ دریافت از",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "receiveDateTo",
+                        "in": "query",
+                        "description": "تاریخ دریافت تا",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "description": "شماره سپام",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "yesOrNoCode",
+                        "in": "query",
+                        "description": "دارد یا ندارد",
+                        "required": false,
+                        "type": "string",
+                        "format": "byte"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«ابجکت%20پاسخ%20پیام%20های%20گشایش%20سایر%20بانک%20ها»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/confirm/management/{requestInquiryId}": {
+            "put": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس تایید مدیریت استعلام",
+                "operationId": "saveManagementConfirmRequestInquiryUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "approveStatus",
+                        "in": "query",
+                        "description": "approveStatus",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/confirm/{requestInquiryId}": {
+            "put": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس تایید استعلام",
+                "operationId": "confirmRequestInquiryUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/customer/{customerId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "بازیابی اطلاعات حساب مشتری با شماره حساب ",
+                "operationId": "getCustomerInfoUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "customerId",
+                        "in": "path",
+                        "description": "customerId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/delete/{requestInquiryId}": {
+            "delete": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "حذف درخواست استعلام",
+                "operationId": "deleteRequestInquiryUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/edit": {
+            "put": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس ویرایش درخواست استعلام",
+                "operationId": "editRequestInquiryUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "requestInquirySaveAndEditDto",
+                        "description": "requestInquirySaveAndEditDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RequestInquiryEditDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/edit/init/{requestInquiryId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس اولیه ویرایش درخواست استعلام",
+                "operationId": "getEditRequestInquiryInitUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«RequestInquiryEditInitDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/list": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "بازیابی  لیست استعلام",
+                "description": "for internal use",
+                "operationId": "getRequestInquiryListUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "fromCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "toCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«RequestInquiry»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/list/id": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "بازیابی  لیست شناسه استعلام",
+                "description": "for internal use",
+                "operationId": "getRequestInquiryIdListUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "fromCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "toCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«biginteger»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/revoke/{requestInquiryId}": {
+            "put": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس ابطال استعلام",
+                "operationId": "revokeRequestInquiryUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/save": {
+            "post": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس ایجاد درخواست استعلام",
+                "operationId": "saveRequestInquiryUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "requestInquiryDto",
+                        "description": "requestInquiryDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RequestInquirySaveDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/save/init": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس اطلاعات اولیه ایجاد درخواست استعلام",
+                "operationId": "getRequestInquirySaveInitParamsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/search/init": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس اولیه بازیابی جدول استعلام",
+                "operationId": "getRequestInquiryGridInitUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«StsInquiryTypes»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/search/{size}/{page}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "بازیابی جدول استعلام",
+                "operationId": "getRequestInquiryGridUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "customerId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "inquiryFromDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "inquiryToDate",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nationalId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "size",
+                        "in": "path",
+                        "description": "size",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "stsInquiryTypesCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«RequestInquiryGridDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/status/last/{requestInquiryId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "بازیابی آخرین وضعیت استعلام",
+                "description": "for internal use",
+                "operationId": "getLastRequestInquiryStatusUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«StsInquiry»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/view/archive/{requestInquiryId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "سرویس مشاهده سوابق وضعیت های استعلام ",
+                "operationId": "getRequestInquiryArchiveUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«RequestInquiryArchiveDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/view/sepam/{sepamId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "مشاهده درخواست استعلام با شماره سپام",
+                "operationId": "getRequestInquiryBySepamIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "sepamId",
+                        "in": "path",
+                        "description": "sepamId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«RequestInquiryViewDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/sepam/request-inquiry/view/{requestInquiryId}": {
+            "get": {
+                "tags": [
+                    "request-inquiry-controller"
+                ],
+                "summary": "مشاهده درخواست استعلام با شناسه",
+                "operationId": "getRequestInquiryUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestInquiryId",
+                        "in": "path",
+                        "description": "requestInquiryId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«RequestInquiryViewDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "spring_oauth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/auth",
+            "tokenUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/token",
+            "flow": "accessCode"
+        }
+    },
+    "definitions": {
+        "Bank": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "latinName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                }
+            },
+            "title": "Bank"
+        },
+        "Confirm730InitParamResponse": {
+            "type": "object",
+            "properties": {
+                "receiveDate": {
+                    "type": "string"
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "Confirm730InitParamResponse"
+        },
+        "EditedOtherBankMsgResponse": {
+            "type": "object",
+            "properties": {
+                "otherBankReceiveDate": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "senderBank": {
+                    "type": "string"
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "EditedOtherBankMsgResponse"
+        },
+        "Message": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Message"
+        },
+        "OtherBankMsgInitResponse": {
+            "type": "object",
+            "properties": {
+                "banks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bank"
+                    }
+                },
+                "receiveDateFrom": {
+                    "type": "string"
+                },
+                "receiveDateTo": {
+                    "type": "string"
+                },
+                "yesOrNos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/YesOrNo"
+                    }
+                }
+            },
+            "title": "OtherBankMsgInitResponse"
+        },
+        "RequestInquiry": {
+            "type": "object",
+            "properties": {
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "currentYear": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "customerAddress": {
+                    "type": "string"
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "locationIdRegister": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "nationalId": {
+                    "type": "string"
+                },
+                "registerDate": {
+                    "type": "string"
+                },
+                "registerNo": {
+                    "type": "string"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "RequestInquiry"
+        },
+        "RequestInquiryArchiveDto": {
+            "type": "object",
+            "properties": {
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sepamId": {
+                    "type": "string"
+                },
+                "stsArchives": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StsArchive"
+                    }
+                }
+            },
+            "title": "RequestInquiryArchiveDto"
+        },
+        "RequestInquiryEditDto": {
+            "type": "object",
+            "required": [
+                "creditAmount",
+                "customerId",
+                "requestInquiryId",
+                "requestTypeCode"
+            ],
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "exclusiveMinimum": false
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "highYeild": {
+                    "type": "boolean",
+                    "description": "بنگاه های زودبازده"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "RequestInquiryEditDto"
+        },
+        "RequestInquiryEditInitDto": {
+            "type": "object",
+            "properties": {
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ اعتبار اسنادی"
+                },
+                "currentYear": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "سال جاری"
+                },
+                "customerAddress": {
+                    "type": "string",
+                    "description": "آدرس متقاضی/آدرس شرکت"
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب"
+                },
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد نوع متقاضی"
+                },
+                "customerTypeName": {
+                    "type": "string",
+                    "description": "نام نوع متقاضی"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "نام و نام خانوادگی"
+                },
+                "locationRegisterCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کدشهر محل صدور شناسنامه/محل ثبت"
+                },
+                "locationRegisterName": {
+                    "type": "string",
+                    "description": "نام شهر محل صدور شناسنامه/محل ثبت"
+                },
+                "nationalId": {
+                    "type": "string",
+                    "description": "شناسه ملی"
+                },
+                "registerDate": {
+                    "type": "string",
+                    "description": "تاریخ تولد / تاریخ ثبت"
+                },
+                "registerNo": {
+                    "type": "string",
+                    "description": "شماره شناسنامه/شماره ثبت"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه درخواست استعلام"
+                },
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد نوع درخواست"
+                },
+                "requestTypeName": {
+                    "type": "string",
+                    "description": "نام نوع درخواست"
+                },
+                "requestTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RequestType"
+                    }
+                },
+                "sepamId": {
+                    "type": "string",
+                    "description": "شماره سپام"
+                }
+            },
+            "title": "RequestInquiryEditInitDto"
+        },
+        "RequestInquiryGridDto": {
+            "type": "object",
+            "properties": {
+                "gridItemDtoList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RequestInquiryGridItemDto"
+                    }
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "RequestInquiryGridDto"
+        },
+        "RequestInquiryGridItemDto": {
+            "type": "object",
+            "properties": {
+                "confirmStatusTitle": {
+                    "type": "string"
+                },
+                "createDate": {
+                    "type": "string"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customerId": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "lastInquiryStatusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastInquiryStatusTitle": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nationalId": {
+                    "type": "string"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "RequestInquiryGridItemDto"
+        },
+        "RequestInquirySaveDto": {
+            "type": "object",
+            "required": [
+                "creditAmount",
+                "customerId",
+                "requestTypeCode"
+            ],
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "exclusiveMinimum": false
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "highYeild": {
+                    "type": "boolean",
+                    "description": "بنگاه های زودبازده"
+                },
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "RequestInquirySaveDto"
+        },
+        "RequestInquiryViewDto": {
+            "type": "object",
+            "properties": {
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ اعتبار اسنادی"
+                },
+                "currentYear": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "سال جاری"
+                },
+                "customerAddress": {
+                    "type": "string",
+                    "description": "آدرس متقاضی/آدرس شرکت"
+                },
+                "customerId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب"
+                },
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد نوع متقاضی"
+                },
+                "customerTypeName": {
+                    "type": "string",
+                    "description": "نام نوع متقاضی"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "نام و نام خانوادگی"
+                },
+                "locationRegisterCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کدشهر محل صدور شناسنامه/محل ثبت"
+                },
+                "locationRegisterName": {
+                    "type": "string",
+                    "description": "نام شهر محل صدور شناسنامه/محل ثبت"
+                },
+                "nationalId": {
+                    "type": "string",
+                    "description": "شناسه ملی"
+                },
+                "registerDate": {
+                    "type": "string",
+                    "description": "تاریخ تولد / تاریخ ثبت"
+                },
+                "registerNo": {
+                    "type": "string",
+                    "description": "شماره شناسنامه/شماره ثبت"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه درخواست استعلام"
+                },
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد نوع درخواست"
+                },
+                "requestTypeName": {
+                    "type": "string",
+                    "description": "نام نوع درخواست"
+                },
+                "sepamId": {
+                    "type": "string",
+                    "description": "شماره سپام"
+                }
+            },
+            "title": "RequestInquiryViewDto"
+        },
+        "RequestType": {
+            "type": "object",
+            "properties": {
+                "requestTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "RequestType"
+        },
+        "ResponseEntity": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPTED",
+                        "ALREADY_REPORTED",
+                        "BAD_GATEWAY",
+                        "BAD_REQUEST",
+                        "BANDWIDTH_LIMIT_EXCEEDED",
+                        "CHECKPOINT",
+                        "CONFLICT",
+                        "CONTINUE",
+                        "CREATED",
+                        "DESTINATION_LOCKED",
+                        "EXPECTATION_FAILED",
+                        "FAILED_DEPENDENCY",
+                        "FORBIDDEN",
+                        "FOUND",
+                        "GATEWAY_TIMEOUT",
+                        "GONE",
+                        "HTTP_VERSION_NOT_SUPPORTED",
+                        "IM_USED",
+                        "INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "INSUFFICIENT_STORAGE",
+                        "INTERNAL_SERVER_ERROR",
+                        "I_AM_A_TEAPOT",
+                        "LENGTH_REQUIRED",
+                        "LOCKED",
+                        "LOOP_DETECTED",
+                        "METHOD_FAILURE",
+                        "METHOD_NOT_ALLOWED",
+                        "MOVED_PERMANENTLY",
+                        "MOVED_TEMPORARILY",
+                        "MULTIPLE_CHOICES",
+                        "MULTI_STATUS",
+                        "NETWORK_AUTHENTICATION_REQUIRED",
+                        "NON_AUTHORITATIVE_INFORMATION",
+                        "NOT_ACCEPTABLE",
+                        "NOT_EXTENDED",
+                        "NOT_FOUND",
+                        "NOT_IMPLEMENTED",
+                        "NOT_MODIFIED",
+                        "NO_CONTENT",
+                        "OK",
+                        "PARTIAL_CONTENT",
+                        "PAYLOAD_TOO_LARGE",
+                        "PAYMENT_REQUIRED",
+                        "PERMANENT_REDIRECT",
+                        "PRECONDITION_FAILED",
+                        "PRECONDITION_REQUIRED",
+                        "PROCESSING",
+                        "PROXY_AUTHENTICATION_REQUIRED",
+                        "REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "REQUEST_ENTITY_TOO_LARGE",
+                        "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "REQUEST_TIMEOUT",
+                        "REQUEST_URI_TOO_LONG",
+                        "RESET_CONTENT",
+                        "SEE_OTHER",
+                        "SERVICE_UNAVAILABLE",
+                        "SWITCHING_PROTOCOLS",
+                        "TEMPORARY_REDIRECT",
+                        "TOO_EARLY",
+                        "TOO_MANY_REQUESTS",
+                        "UNAUTHORIZED",
+                        "UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "UNPROCESSABLE_ENTITY",
+                        "UNSUPPORTED_MEDIA_TYPE",
+                        "UPGRADE_REQUIRED",
+                        "URI_TOO_LONG",
+                        "USE_PROXY",
+                        "VARIANT_ALSO_NEGOTIATES"
+                    ]
+                },
+                "statusCodeValue": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ResponseEntity"
+        },
+        "Response«Confirm730InitParamResponse»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Confirm730InitParamResponse"
+                }
+            },
+            "title": "Response«Confirm730InitParamResponse»"
+        },
+        "Response«EditedOtherBankMsgResponse»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/EditedOtherBankMsgResponse"
+                }
+            },
+            "title": "Response«EditedOtherBankMsgResponse»"
+        },
+        "Response«List«RequestInquiry»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RequestInquiry"
+                    }
+                }
+            },
+            "title": "Response«List«RequestInquiry»»"
+        },
+        "Response«List«StsInquiryTypes»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StsInquiryTypes"
+                    }
+                }
+            },
+            "title": "Response«List«StsInquiryTypes»»"
+        },
+        "Response«List«biginteger»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "title": "Response«List«biginteger»»"
+        },
+        "Response«List«ابجکت پاسخ پیام های گشایش سایر بانک ها»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ابجکت%20پاسخ%20پیام%20های%20گشایش%20سایر%20بانک%20ها"
+                    }
+                }
+            },
+            "title": "Response«List«ابجکت پاسخ پیام های گشایش سایر بانک ها»»"
+        },
+        "Response«OtherBankMsgInitResponse»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/OtherBankMsgInitResponse"
+                }
+            },
+            "title": "Response«OtherBankMsgInitResponse»"
+        },
+        "Response«RequestInquiryArchiveDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/RequestInquiryArchiveDto"
+                }
+            },
+            "title": "Response«RequestInquiryArchiveDto»"
+        },
+        "Response«RequestInquiryEditInitDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/RequestInquiryEditInitDto"
+                }
+            },
+            "title": "Response«RequestInquiryEditInitDto»"
+        },
+        "Response«RequestInquiryGridDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/RequestInquiryGridDto"
+                }
+            },
+            "title": "Response«RequestInquiryGridDto»"
+        },
+        "Response«RequestInquiryViewDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/RequestInquiryViewDto"
+                }
+            },
+            "title": "Response«RequestInquiryViewDto»"
+        },
+        "Response«ShowOtherBankMsg700Response»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ShowOtherBankMsg700Response"
+                }
+            },
+            "title": "Response«ShowOtherBankMsg700Response»"
+        },
+        "Response«ShowOtherBankMsg707Response»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ShowOtherBankMsg707Response"
+                }
+            },
+            "title": "Response«ShowOtherBankMsg707Response»"
+        },
+        "Response«StsInquiry»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/StsInquiry"
+                }
+            },
+            "title": "Response«StsInquiry»"
+        },
+        "Response«boolean»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Response«boolean»"
+        },
+        "Response«string»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "string"
+                }
+            },
+            "title": "Response«string»"
+        },
+        "ShowOtherBankMsg700Response": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "bankName": {
+                    "type": "string"
+                },
+                "beneficiaryAccNumber": {
+                    "type": "string"
+                },
+                "beneficiaryAddress": {
+                    "type": "string"
+                },
+                "beneficiaryLastName": {
+                    "type": "string"
+                },
+                "beneficiaryName": {
+                    "type": "string"
+                },
+                "beneficiaryNationalId": {
+                    "type": "string"
+                },
+                "branchCode": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchName": {
+                    "type": "string"
+                },
+                "confirm": {
+                    "type": "string"
+                },
+                "creditTypeTitle": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "customerAddress": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "string"
+                },
+                "dueDate": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastForwardingDate": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "multiForwarding": {
+                    "type": "string"
+                },
+                "multiVehicle": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "nationalCodePerson": {
+                    "type": "string"
+                },
+                "paymentDetails": {
+                    "type": "string"
+                },
+                "paymentType": {
+                    "type": "string"
+                },
+                "receiveDate": {
+                    "type": "string"
+                },
+                "sepmaId": {
+                    "type": "string"
+                },
+                "showAndHide": {
+                    "type": "boolean"
+                },
+                "swiftCode": {
+                    "type": "string"
+                },
+                "tolerance": {
+                    "type": "number"
+                }
+            },
+            "title": "ShowOtherBankMsg700Response"
+        },
+        "ShowOtherBankMsg707Response": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "bankName": {
+                    "type": "string"
+                },
+                "beneficiaryAddress": {
+                    "type": "string"
+                },
+                "beneficiaryLastName": {
+                    "type": "string"
+                },
+                "beneficiaryName": {
+                    "type": "string"
+                },
+                "beneficiaryNationalId": {
+                    "type": "string"
+                },
+                "branchCode": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchName": {
+                    "type": "string"
+                },
+                "creationDate": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "decreasedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "decreasedCurrency": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "forwardingDestination": {
+                    "type": "string"
+                },
+                "forwardingOrigin": {
+                    "type": "string"
+                },
+                "increasedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "increasedCurrency": {
+                    "type": "string"
+                },
+                "lastForwardingDate": {
+                    "type": "string"
+                },
+                "modifyDate": {
+                    "type": "string"
+                },
+                "modifyMsgCount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "newDueDate": {
+                    "type": "string"
+                },
+                "receiveDate": {
+                    "type": "string"
+                },
+                "senderBankDetail": {
+                    "type": "string"
+                },
+                "sepmaId": {
+                    "type": "string"
+                },
+                "tolerance": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ShowOtherBankMsg707Response"
+        },
+        "Status": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Status"
+        },
+        "StsArchive": {
+            "type": "object",
+            "properties": {
+                "changeDate": {
+                    "type": "string"
+                },
+                "requestStatus": {
+                    "type": "string"
+                },
+                "rowId": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "title": "StsArchive"
+        },
+        "StsInquiry": {
+            "type": "object",
+            "properties": {
+                "lastChangDate": {
+                    "type": "string"
+                },
+                "lastChangUsrId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "requestInquiry": {
+                    "$ref": "#/definitions/RequestInquiry"
+                },
+                "stsInquiryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "stsInquiryTypes": {
+                    "$ref": "#/definitions/StsInquiryTypes"
+                },
+                "yesOrNoConfirm": {
+                    "type": "string",
+                    "format": "byte"
+                }
+            },
+            "title": "StsInquiry"
+        },
+        "StsInquiryTypes": {
+            "type": "object",
+            "properties": {
+                "stsInquiryTypesCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "yesOrNoMassage": {
+                    "type": "string",
+                    "format": "byte"
+                }
+            },
+            "title": "StsInquiryTypes"
+        },
+        "YesOrNo": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "yesOrNoCode": {
+                    "type": "string",
+                    "format": "byte"
+                }
+            },
+            "title": "YesOrNo"
+        },
+        "ابجکت درخواست ایجاد پیام 730": {
+            "type": "object",
+            "properties": {
+                "costsAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "هزینه بررسی پیام"
+                },
+                "costsDetails": {
+                    "type": "string",
+                    "description": "جزییات هزینه ها"
+                },
+                "customerId": {
+                    "type": "string",
+                    "description": "شماره حساب جهت تسويه هزينه ها"
+                },
+                "otherBankId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه جدول پیام سایر بانک ها"
+                },
+                "receiveDate": {
+                    "type": "string",
+                    "description": "تاریخ دریافت"
+                },
+                "sepamId": {
+                    "type": "string",
+                    "description": "شماره سپام"
+                }
+            },
+            "title": "ابجکت درخواست ایجاد پیام 730"
+        },
+        "ابجکت پاسخ پیام های گشایش سایر بانک ها": {
+            "type": "object",
+            "properties": {
+                "bankName": {
+                    "type": "string",
+                    "description": "بانک فرستنده"
+                },
+                "branchName": {
+                    "type": "string",
+                    "description": "شعبه فرستنده"
+                },
+                "confirmReceive": {
+                    "type": "string",
+                    "description": "شناسه پیام سایر بانک ها"
+                },
+                "otherBankMsgId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه پیام سایر بانک ها"
+                },
+                "receiveDate": {
+                    "type": "string",
+                    "description": "شناسه پیام سایر بانک ها"
+                },
+                "sepamId": {
+                    "type": "string",
+                    "description": "شماره سپام"
+                }
+            },
+            "title": "ابجکت پاسخ پیام های گشایش سایر بانک ها"
+        }
+    }
+}

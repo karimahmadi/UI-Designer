@@ -1,0 +1,1003 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "سرویسهای مربوط به قرض الحسنه ویژه",
+        "version": "1.0.1",
+        "title": "سرویس قرض الحسنه ویژه"
+    },
+    "host": "192.168.20.72:5020",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "interest-free-controller",
+            "description": "Interest Free Controller"
+        },
+        {
+            "name": "request-controller",
+            "description": "Request Controller"
+        }
+    ],
+    "paths": {
+        "/rest/lo/loan/interestfree/special/contracts": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "گزارش اطلاعات یک قرارداد",
+                "operationId": "getReportOfContractByContractIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractNumber",
+                        "in": "query",
+                        "description": "contractNumber",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ReportContractDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/loan/interestfree/special/contracts/installment/print": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "چاپ گزارش صورت محاسبه کارمزد قرض الحسنه",
+                "operationId": "getCommissionCalculationByContractIdPrintUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractNumber",
+                        "in": "query",
+                        "description": "contractNumber",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/loan/interestfree/special/contracts/installment/{size}/{page}": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "گزارش صورت محاسبه کارمزد قرض الحسنه",
+                "operationId": "getCommissionCalculationByContractIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractNumber",
+                        "in": "query",
+                        "description": "contractNumber",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "path",
+                        "description": "size",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«InterestFreeLoanCalculation»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/loan/interestfree/special/contracts/print": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "چاپ گزارش حساب های قرض الحسنه ویژه",
+                "operationId": "getSpecialInterestFreeByAccountNumberPrintUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "accountNumber",
+                        "in": "query",
+                        "description": "accountNumber",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/loan/interestfree/special/contracts/prints": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "چاپ گزارش اطلاعات یک قرارداد",
+                "operationId": "getReportOfContractByContractIdPrintUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractNumber",
+                        "in": "query",
+                        "description": "contractNumber",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string",
+                            "format": "byte"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/loan/interestfree/special/contracts/{size}/{page}": {
+            "get": {
+                "tags": [
+                    "interest-free-controller"
+                ],
+                "summary": "گزارش حساب های قرض الحسنه ویژه",
+                "operationId": "getSpecialInterestFreeByAccountNumberUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "accountNumber",
+                        "in": "query",
+                        "description": "accountNumber",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "path",
+                        "description": "size",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«InterestFreeDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lon/lending/interestfree/request/": {
+            "post": {
+                "tags": [
+                    "request-controller"
+                ],
+                "summary": "createRequests",
+                "operationId": "createRequestsUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "requestDto",
+                        "description": "requestDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateRequestDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lon/lending/interestfree/request/contract": {
+            "post": {
+                "tags": [
+                    "request-controller"
+                ],
+                "summary": "createContract",
+                "operationId": "createContractUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "requestId",
+                        "in": "query",
+                        "description": "requestId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lon/lending/interestfree/request/contract/installment": {
+            "post": {
+                "tags": [
+                    "request-controller"
+                ],
+                "summary": "calculateContractInstallment",
+                "operationId": "calculateContractInstallmentUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractId",
+                        "in": "query",
+                        "description": "contractId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "spring_oauth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/auth",
+            "tokenUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/token",
+            "flow": "accessCode"
+        }
+    },
+    "definitions": {
+        "CommissionsOfYears": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "years": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "CommissionsOfYears"
+        },
+        "CreateRequestDto": {
+            "type": "object",
+            "properties": {
+                "accountNumbers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "depositorAccNo": {
+                    "type": "string"
+                }
+            },
+            "title": "CreateRequestDto"
+        },
+        "InstallmentsDto": {
+            "type": "object",
+            "properties": {
+                "commissionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "کارمزد"
+                },
+                "installmentDate": {
+                    "type": "string",
+                    "description": "تاریخ قسط"
+                },
+                "installmentNo": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "شماره قسط"
+                },
+                "principalAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "اصل قسط"
+                },
+                "principalDebtAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده بدهی خالص"
+                },
+                "receivedAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "جمع دریافتی از مشتری"
+                },
+                "yearlyCommission": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "درآمد سالانه"
+                }
+            },
+            "title": "InstallmentsDto"
+        },
+        "InterestFreeDetailDto": {
+            "type": "object",
+            "properties": {
+                "accountNumber": {
+                    "type": "string"
+                },
+                "contractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contractNo": {
+                    "type": "string"
+                },
+                "customerDebitAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "payOffAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "receiveAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "receiveDate": {
+                    "type": "string"
+                },
+                "row": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "InterestFreeDetailDto"
+        },
+        "InterestFreeDto": {
+            "type": "object",
+            "properties": {
+                "accountBalanceAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده حساب"
+                },
+                "accountNumber": {
+                    "type": "string",
+                    "description": "شماره حساب سپرده گذار"
+                },
+                "balanceOfDayAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده روز حساب سپرده گذار"
+                },
+                "depositBalanceAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده سپرده گذار"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "نام و نام خانوادگی"
+                },
+                "loanBalanceAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده تسهیلات"
+                },
+                "loans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/InterestFreeDetailDto"
+                    }
+                },
+                "receiveAmountSum": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "جمع مبلغ دریافتی"
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalLoanBalanceAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalReceiveAmountSum": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "InterestFreeDto"
+        },
+        "InterestFreeLoanCalculation": {
+            "type": "object",
+            "properties": {
+                "benefitRate": {
+                    "type": "number",
+                    "description": "نرخ سود"
+                },
+                "branchCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد شعبه"
+                },
+                "branchName": {
+                    "type": "string",
+                    "description": "نام شعبه"
+                },
+                "collateralAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ وثیقه"
+                },
+                "contractNo": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره قرارداد"
+                },
+                "currentAccountNumber": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب جاری"
+                },
+                "enactmentAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ مصوبه"
+                },
+                "firstInstallmentDate": {
+                    "type": "string",
+                    "description": "تاریخ اولین قسط"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "نام خریدار"
+                },
+                "installmentDuration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "دوران اقساط به ماه"
+                },
+                "installmentNumber": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "تعداد قسط"
+                },
+                "installmentType": {
+                    "type": "string",
+                    "description": "نوع اقساط"
+                },
+                "installments": {
+                    "type": "array",
+                    "description": "لیست اقساط",
+                    "items": {
+                        "$ref": "#/definitions/InstallmentsDto"
+                    }
+                },
+                "lastInstallmentDate": {
+                    "type": "string",
+                    "description": "تاریخ آخرین قسط"
+                },
+                "loanAccountNumber": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب تسهیلات"
+                },
+                "openingDate": {
+                    "type": "string",
+                    "description": "تاریخ قرارداد"
+                },
+                "preInceptionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "پیش پرداخت"
+                },
+                "principalAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "خالص پرداختی"
+                },
+                "profitAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "سود دوران پرداخت"
+                },
+                "tejRequestNo": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره درخواست"
+                },
+                "usageType": {
+                    "type": "string",
+                    "description": "نحوه استفاده"
+                }
+            },
+            "title": "InterestFreeLoanCalculation"
+        },
+        "Message": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Message"
+        },
+        "ReportContractDto": {
+            "type": "object",
+            "properties": {
+                "accountNo": {
+                    "type": "string",
+                    "description": "حساب مشتری"
+                },
+                "badDebitAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ مطالبات مشکوک الوصول"
+                },
+                "badDebitTransferDate": {
+                    "type": "string",
+                    "description": "تاریخ انتقال به مشکوک"
+                },
+                "benefitRate": {
+                    "type": "number",
+                    "description": "نرخ سود"
+                },
+                "branchCode": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "کد شعبه"
+                },
+                "branchName": {
+                    "type": "string",
+                    "description": "نام شعبه"
+                },
+                "collateralAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ وثیقه"
+                },
+                "commissions": {
+                    "type": "array",
+                    "description": "مبلغ کارمزد سالها",
+                    "items": {
+                        "$ref": "#/definitions/CommissionsOfYears"
+                    }
+                },
+                "contractAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ قرارداد"
+                },
+                "contractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contractNo": {
+                    "type": "string",
+                    "description": "شماره قرارداد"
+                },
+                "contractType": {
+                    "type": "string",
+                    "description": "نوع قرارداد"
+                },
+                "customerType": {
+                    "type": "string",
+                    "description": "شخصیت مشتری"
+                },
+                "firstInstallmentDate": {
+                    "type": "string",
+                    "description": "تاریخ اولین قسط"
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "نام(شرکت)"
+                },
+                "governmentBenefitRate": {
+                    "type": "number",
+                    "description": "درصد سهم دولت"
+                },
+                "inceptionAim": {
+                    "type": "string",
+                    "description": "هدف فعالیت"
+                },
+                "informationReportId": {
+                    "type": "string",
+                    "description": "شماره پرونده اطلاعاتی"
+                },
+                "installmentAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ قسط"
+                },
+                "installmentDuration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "دوره اقساط(به ماه)"
+                },
+                "installmentNumber": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "تعداد اقساط"
+                },
+                "installmentType": {
+                    "type": "string",
+                    "description": "نوع دریافت اقساط"
+                },
+                "interestFreeLoanType": {
+                    "type": "string",
+                    "description": "نوع قرض الحسنه"
+                },
+                "interruptPeriodCommissionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ کارمزد دوران تنفس "
+                },
+                "lastInstallmentAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ آخرین قسط"
+                },
+                "lastInstallmentDate": {
+                    "type": "string",
+                    "description": "تاریخ آخرین قسط"
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "نام خانوادگی(نوع شرکت)"
+                },
+                "loanAccountNumber": {
+                    "type": "string"
+                },
+                "nationalId": {
+                    "type": "string",
+                    "description": "کد/شناسه ملی"
+                },
+                "nextInstallmentDate": {
+                    "type": "string",
+                    "description": "تاریخ قسط بعدی"
+                },
+                "openingDate": {
+                    "type": "string",
+                    "description": "تاریخ قرارداد"
+                },
+                "paidInstallmentNumber": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "اقساط پرداخت شده"
+                },
+                "possessionType": {
+                    "type": "string",
+                    "description": "بخش فعالیت"
+                },
+                "preInceptionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ پیش پرداخت"
+                },
+                "principalBalanceAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مانده خالص اعتبار"
+                },
+                "principalReceivedAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "جمع اصل دریافت شده"
+                },
+                "registerDate": {
+                    "type": "string",
+                    "description": "تاریخ تولد(ثبت)"
+                },
+                "registerNo": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "شماره شناسنامه(ثبت)"
+                },
+                "registerPlace": {
+                    "type": "string",
+                    "description": "محل صدور شناسنامه"
+                },
+                "sumOfCommission": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "جمع کل کارمزد"
+                },
+                "tejRequestNo": {
+                    "type": "string",
+                    "description": "شماره درخواست"
+                },
+                "usageMethod": {
+                    "type": "string",
+                    "description": "نوع استفاده"
+                },
+                "usagePlace": {
+                    "type": "string",
+                    "description": "شهرستان محل مصرف"
+                }
+            },
+            "title": "ReportContractDto"
+        },
+        "Response«InterestFreeDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/InterestFreeDto"
+                }
+            },
+            "title": "Response«InterestFreeDto»"
+        },
+        "Response«InterestFreeLoanCalculation»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/InterestFreeLoanCalculation"
+                }
+            },
+            "title": "Response«InterestFreeLoanCalculation»"
+        },
+        "Response«ReportContractDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ReportContractDto"
+                }
+            },
+            "title": "Response«ReportContractDto»"
+        },
+        "Response«boolean»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Response«boolean»"
+        }
+    }
+}

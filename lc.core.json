@@ -1,0 +1,3046 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "سرویسهای اعتبار اسنادی",
+        "version": "2.0.0",
+        "title": "اعتبار اسنادی"
+    },
+    "host": "192.168.101.171",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "collaterals-controller",
+            "description": "سرویس وثایق"
+        },
+        {
+            "name": "contract-controller",
+            "description": "سرویس قرارداد"
+        },
+        {
+            "name": "general-controller",
+            "description": " سرویس های عمومی"
+        }
+    ],
+    "paths": {
+        "/rest/lc/core/collateral/collaterals/contractLcId/{contractLcId}": {
+            "get": {
+                "tags": [
+                    "collaterals-controller"
+                ],
+                "summary": "لیست وثایق با استفاده از شناسه قرار داد",
+                "operationId": "getCollateralsByContractLcIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLcId",
+                        "in": "path",
+                        "description": "contractLcId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ResponseCollaterals»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/collateral/collaterals/sepamId/{sepamId}": {
+            "get": {
+                "tags": [
+                    "collaterals-controller"
+                ],
+                "summary": "لیست وثایق با استفاده از شماره سپام",
+                "operationId": "getCollateralsBySepamIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "sepamId",
+                        "in": "path",
+                        "description": "sepamId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ResponseCollaterals»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/collateral/deleteCollateralByContractLcId": {
+            "delete": {
+                "tags": [
+                    "collaterals-controller"
+                ],
+                "summary": "حذف وثایق",
+                "operationId": "deleteUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLc",
+                        "in": "query",
+                        "description": "contractLc",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/collateral/save": {
+            "post": {
+                "tags": [
+                    "collaterals-controller"
+                ],
+                "summary": "ذخیره وثایق",
+                "operationId": "saveCollaterasUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "changeAmount",
+                        "in": "query",
+                        "description": "changeAmount",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "in": "body",
+                        "name": "collateralSaveRequest",
+                        "description": "collateralSaveRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CollateralSaveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«CollateralContractCmd»»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/collateral/update-collateral-info": {
+            "get": {
+                "tags": [
+                    "collaterals-controller"
+                ],
+                "summary": "اطلاعات جهت بروزرسانی وثایق",
+                "operationId": "updateCollateralUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLc",
+                        "in": "query",
+                        "description": "contractLc",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ResponseCollaterals»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/": {
+            "post": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "ثبت قرارداد",
+                "operationId": "saveContractUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "contractRequest",
+                        "description": "contractRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContractSaveDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractGridItemDto»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "ویرایش قرارداد",
+                "operationId": "editContractUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "contractRequest",
+                        "description": "contractRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContractSaveDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractGridItemDto»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/beneficiary/{nationalId}/{beneficiaryTypeCode}/{enactmentCenterCode}": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "استعلام مشخصات ذینفع با شناسه ملی",
+                "operationId": "getBeneficiaryByNationalIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "beneficiaryTypeCode",
+                        "in": "path",
+                        "description": "beneficiaryTypeCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "enactmentCenterCode",
+                        "in": "path",
+                        "description": "enactmentCenterCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "nationalId",
+                        "in": "path",
+                        "description": "nationalId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Beneficiary»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/change-status-precondition/{contractLcId}": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "پیش شرایط سرویس تغییر وضعیت قرار داد",
+                "operationId": "changeContractStatusInitUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLcId",
+                        "in": "path",
+                        "description": "contractLcId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ChangeContractStatusInit»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/get-change-search-init/": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "سرویس  اولیه تغییرات قرارداد با استفاده از شناسه قرار داد یا شماره سپام در صفحه جستجو",
+                "operationId": "getContractChangeSearchInitByContractLcIdOrSepamIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLcId",
+                        "in": "query",
+                        "description": "contractLcId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "description": "sepamId",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractChangeSearchInitDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/get-edit-contract-init-params/{contractLcId}": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "اطلاعات اولیه ویرایش  قرارداد",
+                "operationId": "getEditContractInitParamsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLcId",
+                        "in": "path",
+                        "description": "contractLcId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractEditInitDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/getContractBySepamId/{sepamId}": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "مشاهده قرارداد",
+                "operationId": "getBySepamIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "sepamId",
+                        "in": "path",
+                        "description": "sepamId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractSaveDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/list/{page}/{size}": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "جستجوی قراردادها",
+                "operationId": "contractGridUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "accountDocSituation",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "beneficiaryName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "branchId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "contractLcId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "contractOpenDateFrom",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "contractOpenDateTo",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "contractStatuses",
+                        "in": "query",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "creditTypeCode",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "customerId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "dueDateFrom",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dueDateTo",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fromCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nationalId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderColumn",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "requestInquiryId",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "requestNumberCenterBank",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sepamId",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "size",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "toCreditAmount",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractGridDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/preview-save-respite-document": {
+            "post": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "سرویس پیش نمایش اسناد تمدید قرارداد",
+                "operationId": "previewSaveRespiteDocumentUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "respiteSaveDto",
+                        "description": "respiteSaveDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RespiteSaveDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«DocumentPreviewResponse»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/respite-document-reverse": {
+            "post": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "سرویس برگشت اسناد تمدید قرارداد",
+                "operationId": "respiteDocumentReverseUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "modifyContractId",
+                        "in": "query",
+                        "description": "modifyContractId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«IssueDocumentResponse»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/save-respite": {
+            "post": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "سرویس ذخیره تمدید قرارداد",
+                "operationId": "saveRespiteUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "respiteSaveDto",
+                        "description": "respiteSaveDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RespiteSaveDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractRespiteDto»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/save/init": {
+            "get": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "اطلاعات اولیه ثبت قرارداد",
+                "operationId": "getContractInitParamsForSaveUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractSaveInitDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/contract/{contractLcId}": {
+            "delete": {
+                "tags": [
+                    "contract-controller"
+                ],
+                "summary": "حذف قرارداد",
+                "operationId": "deleteContractUsingDELETE",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "contractLcId",
+                        "in": "path",
+                        "description": "contractLcId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/general/check/iban": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "سرویس بررسی شماره شبا",
+                "operationId": "checkIbanUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankCode",
+                        "in": "query",
+                        "description": "bankCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "iban",
+                        "in": "query",
+                        "description": "iban",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "nationalCode",
+                        "in": "query",
+                        "description": "nationalCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«boolean»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/general/collaterals/contractLcId/{contractLcId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "لیست وثایق با استفاده از شناسه قرار داد",
+                "operationId": "getEconomySectionByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "economySectionCode",
+                        "in": "path",
+                        "description": "economySectionCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EconomySection»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lc/core/general/get-branch-by-id/{branchId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getBranchById",
+                "operationId": "getBranchByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "spring_oauth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/auth",
+            "tokenUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/token",
+            "flow": "accessCode"
+        }
+    },
+    "definitions": {
+        "AssuranceType": {
+            "type": "object",
+            "properties": {
+                "assuranceTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "AssuranceType"
+        },
+        "Bank": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "latinName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Bank"
+        },
+        "Beneficiary": {
+            "type": "object",
+            "properties": {
+                "beneficiaryAddress": {
+                    "type": "string"
+                },
+                "beneficiaryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "beneficiaryName": {
+                    "type": "string"
+                },
+                "beneficiaryNationalId": {
+                    "type": "string"
+                }
+            },
+            "title": "Beneficiary"
+        },
+        "BeneficiaryType": {
+            "type": "object",
+            "properties": {
+                "beneficiaryTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "BeneficiaryType"
+        },
+        "ChangeContractStatusInit": {
+            "type": "object",
+            "properties": {
+                "currentStatusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "currentStatusTitle": {
+                    "type": "string"
+                },
+                "nextStatusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nextStatusTitle": {
+                    "type": "string"
+                }
+            },
+            "title": "ChangeContractStatusInit"
+        },
+        "CollateralContractCmd": {
+            "type": "object",
+            "properties": {
+                "collateralContractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "collateralCoverageCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralTypesCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralUsedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "modifyContractId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "CollateralContractCmd"
+        },
+        "CollateralDto": {
+            "type": "object",
+            "properties": {
+                "collateralContractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "collateralCoverageCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralNumber": {
+                    "type": "string"
+                },
+                "collateralTypesCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralTypesTitle": {
+                    "type": "string"
+                },
+                "collateralUsedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "customerAccountNumber": {
+                    "type": "string"
+                },
+                "riskRank": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "row": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "specifiedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "CollateralDto"
+        },
+        "CollateralSaveRequest": {
+            "type": "object",
+            "properties": {
+                "collaterals": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CollateralDto"
+                    }
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "CollateralSaveRequest"
+        },
+        "ContractChangeSearchGridDto": {
+            "type": "object",
+            "properties": {
+                "accDocId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "changeTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "changeTypeTitle": {
+                    "type": "string"
+                },
+                "changedAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentResponse": {
+                    "$ref": "#/definitions/IssueDocumentResponse"
+                },
+                "documentTypeCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "dueDate": {
+                    "type": "string"
+                },
+                "modifyContractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "openingDate": {
+                    "type": "string"
+                },
+                "row": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sepamId": {
+                    "type": "string"
+                },
+                "sourceEntityId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ContractChangeSearchGridDto"
+        },
+        "ContractChangeSearchInitDto": {
+            "type": "object",
+            "properties": {
+                "contractChanges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContractChangeSearchGridDto"
+                    }
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "dueDate": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "openingDate": {
+                    "type": "string"
+                },
+                "sepamId": {
+                    "type": "string"
+                },
+                "totalAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ContractChangeSearchInitDto"
+        },
+        "ContractEditInitDto": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchCode": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchName": {
+                    "type": "string"
+                },
+                "contractRequest": {
+                    "$ref": "#/definitions/ContractSaveDto"
+                },
+                "creditAmount": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "initParams": {
+                    "$ref": "#/definitions/ContractSaveInitDto"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "nationalCode": {
+                    "type": "string"
+                },
+                "sepamId": {
+                    "type": "string"
+                },
+                "stampAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "subEconomySectionCode": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "subEconomySectionTitle": {
+                    "type": "string"
+                }
+            },
+            "title": "ContractEditInitDto"
+        },
+        "ContractGridDto": {
+            "type": "object",
+            "properties": {
+                "contracts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContractGridItemDto"
+                    }
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ContractGridDto"
+        },
+        "ContractGridItemDto": {
+            "type": "object",
+            "properties": {
+                "accDocSituation": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralKey": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "شناسه مرجع وثایق"
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه قرارداد"
+                },
+                "contractStatus": {
+                    "type": "string",
+                    "description": "وضعیت قرارداد"
+                },
+                "contractStatusCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کد وضعیت قرارداد"
+                },
+                "contractTypeTitle": {
+                    "type": "string",
+                    "description": "نوع قرارداد"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ اعتبار اسنادی"
+                },
+                "creditType": {
+                    "type": "string",
+                    "description": "نوع اعتبار"
+                },
+                "creditTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "discountCode": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "کد تنزیل"
+                },
+                "discountStatus": {
+                    "type": "string",
+                    "description": "وضعیت تنزیل"
+                },
+                "documentStatus": {
+                    "type": "string",
+                    "description": "وضعیت اسناد قرارداد"
+                },
+                "dueDate": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string",
+                    "description": "نام و نام خانوادگی / نام شرکت"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "msg700StatusTitle": {
+                    "type": "string",
+                    "description": "وضعیت آخرین پیام 700"
+                },
+                "openingDate": {
+                    "type": "string",
+                    "description": "تاریخ گشایش"
+                },
+                "sepamId": {
+                    "type": "string",
+                    "description": "شماره سپام"
+                }
+            },
+            "title": "ContractGridItemDto"
+        },
+        "ContractRespiteDto": {
+            "type": "object",
+            "properties": {
+                "accDocId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "creditAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentResponse": {
+                    "$ref": "#/definitions/IssueDocumentResponse"
+                },
+                "documentTypeCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "dueDate": {
+                    "type": "string"
+                },
+                "modifyContractId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "nextDueDate": {
+                    "type": "string"
+                },
+                "openingDate": {
+                    "type": "string"
+                },
+                "respiteDate": {
+                    "type": "string"
+                },
+                "row": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sepamId": {
+                    "type": "string"
+                },
+                "sourceEntityId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ContractRespiteDto"
+        },
+        "ContractSaveDto": {
+            "type": "object",
+            "properties": {
+                "approvedCondition": {
+                    "type": "string",
+                    "description": "شرایط مصوبه",
+                    "minLength": 0,
+                    "maxLength": 4000
+                },
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "بانک ذی نفع"
+                },
+                "beneficiaryAccNo": {
+                    "type": "string",
+                    "description": "شماره شبا ذی نفع",
+                    "minLength": 24,
+                    "maxLength": 24
+                },
+                "beneficiaryAddress": {
+                    "type": "string",
+                    "description": "آدرس ذی نفع",
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                "beneficiaryName": {
+                    "type": "string",
+                    "description": "نام ذی نفع",
+                    "minLength": 0,
+                    "maxLength": 255
+                },
+                "beneficiaryNationalId": {
+                    "type": "string",
+                    "description": " شناسه ملی ذی نفع",
+                    "minLength": 0,
+                    "maxLength": 11
+                },
+                "beneficiaryTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نوع ذی نفع"
+                },
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه بانک كارگزار"
+                },
+                "collateralKey": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "شناسه مرجع وثایق"
+                },
+                "contractAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ مصوب"
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "ID"
+                },
+                "contractTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نوع قرارداد"
+                },
+                "contractUsageCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "کاربرد قرارداد"
+                },
+                "creditConditionCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "شرایط اعتبار"
+                },
+                "creditId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه اعتبار"
+                },
+                "creditTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نوع اعتبار"
+                },
+                "customerAccountNumber": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب مشتری"
+                },
+                "deliveryCondition": {
+                    "type": "string",
+                    "description": "شرایط تحویل",
+                    "minLength": 0,
+                    "maxLength": 4000
+                },
+                "dueDate": {
+                    "type": "string",
+                    "description": "تاریخ سررسید",
+                    "pattern": "|\\d\\d\\d\\d/\\d\\d/\\d\\d"
+                },
+                "dueDateRefTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نوع تاریخ مبنا"
+                },
+                "dueInceptionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ سررسید پرداخت"
+                },
+                "dueInceptionPercent": {
+                    "type": "number",
+                    "description": "درصد سررسید پرداخت"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "موعد پرداخت"
+                },
+                "economyCode": {
+                    "type": "string",
+                    "description": "کد اقتصادی",
+                    "minLength": 0,
+                    "maxLength": 50
+                },
+                "employeeNumberCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "تعداد شاغلین"
+                },
+                "enactmentCenterId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "رکن تصویب کننده"
+                },
+                "enactmentNumber": {
+                    "type": "string",
+                    "description": "شماره مصوبه",
+                    "minLength": 0,
+                    "maxLength": 20
+                },
+                "forwardingDestination": {
+                    "type": "string",
+                    "description": "مقصد حمل",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                "forwardingOrigin": {
+                    "type": "string",
+                    "description": "مبدا حمل",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                "forwardingTypeCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نوع حمل"
+                },
+                "inceptionAimId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "هدف فعالیت"
+                },
+                "informationReportId": {
+                    "type": "string",
+                    "description": "شماره گزارش اطلاعاتی",
+                    "minLength": 0,
+                    "maxLength": 50
+                },
+                "inspectionCompany": {
+                    "type": "string",
+                    "description": "عنوان شرکت بازرسی",
+                    "minLength": 0,
+                    "maxLength": 100
+                },
+                "insuranceNo": {
+                    "type": "string",
+                    "description": "شماره بیمه نامه",
+                    "minLength": 0,
+                    "maxLength": 50
+                },
+                "lastForwardingDate": {
+                    "type": "string",
+                    "description": "آخرین تاریخ حمل کالا",
+                    "pattern": "|\\d\\d\\d\\d/\\d\\d/\\d\\d"
+                },
+                "middleInceptionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ میان دریافت"
+                },
+                "middleInceptionPercent": {
+                    "type": "number",
+                    "description": "درصد میان دریافت"
+                },
+                "multiForwarding": {
+                    "type": "string",
+                    "format": "byte",
+                    "description": "حمل به دفعات مجاز است یا خیر"
+                },
+                "multiVehicle": {
+                    "type": "string",
+                    "format": "byte",
+                    "description": "حمل از یک وسیله نقلیه به وسیله نقلیه دیگر مجاز است یا خیر"
+                },
+                "openingDate": {
+                    "type": "string",
+                    "description": "تاریخ گشایش اعتبار",
+                    "pattern": "|\\d\\d\\d\\d/\\d\\d/\\d\\d"
+                },
+                "otherInfoContractId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه اطلاعات تکمیلی"
+                },
+                "permissionConfirmCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "دستورات تایید"
+                },
+                "possessionTypeId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "نوع مالکیت"
+                },
+                "preInceptionAccount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره حساب پیش دریافت"
+                },
+                "preInceptionAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "مبلغ پیش دریافت"
+                },
+                "preInceptionPercent": {
+                    "type": "number",
+                    "description": "درصد پیش دریافت"
+                },
+                "proformaDate": {
+                    "type": "string",
+                    "description": "تاریخ پیش فاکتور",
+                    "pattern": "|\\d\\d\\d\\d/\\d\\d/\\d\\d"
+                },
+                "proformaDueDate": {
+                    "type": "string",
+                    "description": "پایان مهلت  پیش فاکتور",
+                    "pattern": "|\\d\\d\\d\\d/\\d\\d/\\d\\d"
+                },
+                "proformaItems": {
+                    "type": "array",
+                    "description": "لیست جزئیات اطلاعات کالا",
+                    "items": {
+                        "$ref": "#/definitions/ProformaItemDto"
+                    }
+                },
+                "proformaNumber": {
+                    "type": "string",
+                    "description": "شماره پیش فاکتور",
+                    "minLength": 0,
+                    "maxLength": 15
+                },
+                "proformaOtherCost": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "سایر هزینه های پیش فاکتور"
+                },
+                "proformaTotalCost": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "جمع کل فاکتور"
+                },
+                "registerCollateral": {
+                    "type": "boolean",
+                    "description": "تایید ایجاد وثیقه"
+                },
+                "reimbursementMethodCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نحوه بازپرداخت"
+                },
+                "requestInquiryId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شناسه درخواست"
+                },
+                "requirementDocuments": {
+                    "type": "string",
+                    "description": "اسناد مورد نياز",
+                    "minLength": 0,
+                    "maxLength": 4000
+                },
+                "stampCount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "تعداد تمبر"
+                },
+                "subEconomySectionId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "زیر بخش اقتصادی"
+                },
+                "taxNumber": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "شماره مالیاتی"
+                },
+                "toleranceRate": {
+                    "type": "number",
+                    "description": "نرخ تلرانس"
+                },
+                "usedMethodCode": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "نحوه استفاده"
+                }
+            },
+            "title": "ContractSaveDto"
+        },
+        "ContractSaveInitDto": {
+            "type": "object",
+            "properties": {
+                "banks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bank"
+                    }
+                },
+                "beneficiaries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Beneficiary"
+                    }
+                },
+                "beneficiaryTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BeneficiaryType"
+                    }
+                },
+                "collateralKey": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "contractTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContractType"
+                    }
+                },
+                "contractUsages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContractUsage"
+                    }
+                },
+                "creditConditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CreditCondition"
+                    }
+                },
+                "creditTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CreditType"
+                    }
+                },
+                "currentDate": {
+                    "type": "string"
+                },
+                "dueDateReferenceTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DueDateReferenceType"
+                    }
+                },
+                "employeeNumbers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EmployeeNumber"
+                    }
+                },
+                "enactmentCenters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EnactmentCenter"
+                    }
+                },
+                "extendConditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ExtendCondition"
+                    }
+                },
+                "forwardingTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ForwardingType"
+                    }
+                },
+                "inceptionAims": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/InceptionAim"
+                    }
+                },
+                "multiForwarding": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/YesOrNo"
+                    }
+                },
+                "multiVehicle": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/YesOrNo"
+                    }
+                },
+                "permissionConfirms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PermissionConfirm"
+                    }
+                },
+                "possessionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PossessionType"
+                    }
+                },
+                "preInceptionAccountGroup": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "reimbursementMethods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ReimbursementMethod"
+                    }
+                },
+                "stampUnitAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "units": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Unit"
+                    }
+                },
+                "usedMethods": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UsedMethod"
+                    }
+                }
+            },
+            "title": "ContractSaveInitDto"
+        },
+        "ContractType": {
+            "type": "object",
+            "properties": {
+                "contractTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ContractType"
+        },
+        "ContractUsage": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "contractUsageCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "contractUsageTerm": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ContractUsage"
+        },
+        "CreditCondition": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "creditConditionCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "CreditCondition"
+        },
+        "CreditType": {
+            "type": "object",
+            "properties": {
+                "creditTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "CreditType"
+        },
+        "DocumentPreviewItem": {
+            "type": "object",
+            "properties": {
+                "accountNumber": {
+                    "type": "string"
+                },
+                "accountTitle": {
+                    "type": "string"
+                },
+                "actCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "amount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "amountTypetitle": {
+                    "type": "string"
+                },
+                "debtAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "depositAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "documentNumber": {
+                    "type": "string"
+                },
+                "documentTime": {
+                    "type": "string"
+                },
+                "row": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "DocumentPreviewItem"
+        },
+        "DocumentPreviewResponse": {
+            "type": "object",
+            "properties": {
+                "accDocId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchCode": {
+                    "type": "string"
+                },
+                "creditSum": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "currentDate": {
+                    "type": "string"
+                },
+                "currentTime": {
+                    "type": "string"
+                },
+                "debitSum": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "documentDate": {
+                    "type": "string"
+                },
+                "documentStatus": {
+                    "type": "string"
+                },
+                "documentTime": {
+                    "type": "string"
+                },
+                "documents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DocumentPreviewItem"
+                    }
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "DocumentPreviewResponse"
+        },
+        "DueDateReferenceType": {
+            "type": "object",
+            "properties": {
+                "dueDateRefTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "DueDateReferenceType"
+        },
+        "EconomySection": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "economySectionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "parentEconomySectionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "EconomySection"
+        },
+        "EmployeeNumber": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "employeeNumberCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "EmployeeNumber"
+        },
+        "EnactmentCenter": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "enactmentCenterId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "maxAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "object"
+                }
+            },
+            "title": "EnactmentCenter"
+        },
+        "ExtendCondition": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "extendConditionCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ExtendCondition"
+        },
+        "ForwardingType": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "forwardingTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ForwardingType"
+        },
+        "InceptionAim": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "inceptionAimId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "otherAimTitleCode": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "InceptionAim"
+        },
+        "IssueDocumentResponse": {
+            "type": "object",
+            "properties": {
+                "accDocId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "chequeDocumentNo": {
+                    "type": "string"
+                },
+                "documentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "documentTypeCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "title": "IssueDocumentResponse"
+        },
+        "Message": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Message"
+        },
+        "PermissionConfirm": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "permissionConfirmCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "PermissionConfirm"
+        },
+        "PossessionType": {
+            "type": "object",
+            "properties": {
+                "assuranceType": {
+                    "$ref": "#/definitions/AssuranceType"
+                },
+                "assuranceTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ownerOtherCode": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "possessionStatus": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "possessionTypeId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "PossessionType"
+        },
+        "ProformaItemDto": {
+            "type": "object",
+            "properties": {
+                "creditId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "itemCost": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "itemDescription": {
+                    "type": "string"
+                },
+                "itemQuantity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "itemTotalCost": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "proformaItemId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "unitCode": {
+                    "$ref": "#/definitions/Unit"
+                }
+            },
+            "title": "ProformaItemDto"
+        },
+        "ReimbursementMethod": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "reimbursementMethodCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ReimbursementMethod"
+        },
+        "RespiteSaveDto": {
+            "type": "object",
+            "properties": {
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "newDueDate": {
+                    "type": "string"
+                }
+            },
+            "title": "RespiteSaveDto"
+        },
+        "ResponseCollaterals": {
+            "type": "object",
+            "properties": {
+                "collateralUsedAmountTotal": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "collaterals": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CollateralDto"
+                    }
+                },
+                "contractLcId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sepamId": {
+                    "type": "string"
+                }
+            },
+            "title": "ResponseCollaterals"
+        },
+        "ResponseEntity": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPTED",
+                        "ALREADY_REPORTED",
+                        "BAD_GATEWAY",
+                        "BAD_REQUEST",
+                        "BANDWIDTH_LIMIT_EXCEEDED",
+                        "CHECKPOINT",
+                        "CONFLICT",
+                        "CONTINUE",
+                        "CREATED",
+                        "DESTINATION_LOCKED",
+                        "EXPECTATION_FAILED",
+                        "FAILED_DEPENDENCY",
+                        "FORBIDDEN",
+                        "FOUND",
+                        "GATEWAY_TIMEOUT",
+                        "GONE",
+                        "HTTP_VERSION_NOT_SUPPORTED",
+                        "IM_USED",
+                        "INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "INSUFFICIENT_STORAGE",
+                        "INTERNAL_SERVER_ERROR",
+                        "I_AM_A_TEAPOT",
+                        "LENGTH_REQUIRED",
+                        "LOCKED",
+                        "LOOP_DETECTED",
+                        "METHOD_FAILURE",
+                        "METHOD_NOT_ALLOWED",
+                        "MOVED_PERMANENTLY",
+                        "MOVED_TEMPORARILY",
+                        "MULTIPLE_CHOICES",
+                        "MULTI_STATUS",
+                        "NETWORK_AUTHENTICATION_REQUIRED",
+                        "NON_AUTHORITATIVE_INFORMATION",
+                        "NOT_ACCEPTABLE",
+                        "NOT_EXTENDED",
+                        "NOT_FOUND",
+                        "NOT_IMPLEMENTED",
+                        "NOT_MODIFIED",
+                        "NO_CONTENT",
+                        "OK",
+                        "PARTIAL_CONTENT",
+                        "PAYLOAD_TOO_LARGE",
+                        "PAYMENT_REQUIRED",
+                        "PERMANENT_REDIRECT",
+                        "PRECONDITION_FAILED",
+                        "PRECONDITION_REQUIRED",
+                        "PROCESSING",
+                        "PROXY_AUTHENTICATION_REQUIRED",
+                        "REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "REQUEST_ENTITY_TOO_LARGE",
+                        "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "REQUEST_TIMEOUT",
+                        "REQUEST_URI_TOO_LONG",
+                        "RESET_CONTENT",
+                        "SEE_OTHER",
+                        "SERVICE_UNAVAILABLE",
+                        "SWITCHING_PROTOCOLS",
+                        "TEMPORARY_REDIRECT",
+                        "TOO_EARLY",
+                        "TOO_MANY_REQUESTS",
+                        "UNAUTHORIZED",
+                        "UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "UNPROCESSABLE_ENTITY",
+                        "UNSUPPORTED_MEDIA_TYPE",
+                        "UPGRADE_REQUIRED",
+                        "URI_TOO_LONG",
+                        "USE_PROXY",
+                        "VARIANT_ALSO_NEGOTIATES"
+                    ]
+                },
+                "statusCodeValue": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ResponseEntity"
+        },
+        "Response«Beneficiary»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Beneficiary"
+                }
+            },
+            "title": "Response«Beneficiary»"
+        },
+        "Response«ChangeContractStatusInit»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ChangeContractStatusInit"
+                }
+            },
+            "title": "Response«ChangeContractStatusInit»"
+        },
+        "Response«ContractChangeSearchInitDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractChangeSearchInitDto"
+                }
+            },
+            "title": "Response«ContractChangeSearchInitDto»"
+        },
+        "Response«ContractEditInitDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractEditInitDto"
+                }
+            },
+            "title": "Response«ContractEditInitDto»"
+        },
+        "Response«ContractGridDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractGridDto"
+                }
+            },
+            "title": "Response«ContractGridDto»"
+        },
+        "Response«ContractGridItemDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractGridItemDto"
+                }
+            },
+            "title": "Response«ContractGridItemDto»"
+        },
+        "Response«ContractRespiteDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractRespiteDto"
+                }
+            },
+            "title": "Response«ContractRespiteDto»"
+        },
+        "Response«ContractSaveDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractSaveDto"
+                }
+            },
+            "title": "Response«ContractSaveDto»"
+        },
+        "Response«ContractSaveInitDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractSaveInitDto"
+                }
+            },
+            "title": "Response«ContractSaveInitDto»"
+        },
+        "Response«DocumentPreviewResponse»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/DocumentPreviewResponse"
+                }
+            },
+            "title": "Response«DocumentPreviewResponse»"
+        },
+        "Response«EconomySection»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/EconomySection"
+                }
+            },
+            "title": "Response«EconomySection»"
+        },
+        "Response«IssueDocumentResponse»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/IssueDocumentResponse"
+                }
+            },
+            "title": "Response«IssueDocumentResponse»"
+        },
+        "Response«List«CollateralContractCmd»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CollateralContractCmd"
+                    }
+                }
+            },
+            "title": "Response«List«CollateralContractCmd»»"
+        },
+        "Response«ResponseCollaterals»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ResponseCollaterals"
+                }
+            },
+            "title": "Response«ResponseCollaterals»"
+        },
+        "Response«boolean»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Response«boolean»"
+        },
+        "Response«string»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "string"
+                }
+            },
+            "title": "Response«string»"
+        },
+        "Unit": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "unitCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Unit"
+        },
+        "UsedMethod": {
+            "type": "object",
+            "properties": {
+                "activeYesOrNo": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "usedMethodCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "yesOrNo": {
+                    "$ref": "#/definitions/YesOrNo"
+                }
+            },
+            "title": "UsedMethod"
+        },
+        "YesOrNo": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "yesOrNoCode": {
+                    "type": "string",
+                    "format": "byte"
+                }
+            },
+            "title": "YesOrNo"
+        }
+    }
+}

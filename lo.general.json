@@ -1,0 +1,3201 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "سرویس های عمومی",
+        "version": "2.0.0",
+        "title": "سرویس های عمومی"
+    },
+    "host": "192.168.101.171",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "loan-general-controller",
+            "description": "Loan General Controller"
+        }
+    ],
+    "paths": {
+        "/rest/lo/general/assurancetype": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllAssuranceTypes",
+                "operationId": "getAllAssuranceTypesUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«AssuranceType»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/assurancetype/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAssuranceTypeByCode",
+                "operationId": "getAssuranceTypeByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«AssuranceType»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/cbireference/{cbiReferenceId}/{docNumberSeq}": {
+            "put": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "updateCbiReferenceDocNumberSeq",
+                "operationId": "updateCbiReferenceDocNumberSeqUsingPUT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "cbiReferenceId",
+                        "in": "path",
+                        "description": "cbiReferenceId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "docNumberSeq",
+                        "in": "path",
+                        "description": "docNumberSeq",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«CbiReference»"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/cbireference/{date}/{branchId}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getCbiReferenceIdByDateAndBranchId",
+                "operationId": "getCbiReferenceIdByDateAndBranchIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«CbiReferenceCommand»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/collateraltype": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllCollateralTypes",
+                "operationId": "getAllCollateralTypesUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«CollateralTypes»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/collateraltype/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getCollateralTypesByCode",
+                "operationId": "getCollateralTypesByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«CollateralTypes»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/commissionTypes": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "سرویس انواع کارمزد",
+                "operationId": "getFinancialPerEndByDateAndTypeCodeUsingGET_2",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«CommissionType»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/commissionTypes/code/": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "سرویس انواع کارمزد با کد",
+                "operationId": "getFinancialPerEndByDateAndTypeCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "commissionTypeCode",
+                        "in": "query",
+                        "description": "commissionTypeCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«CommissionType»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/contractstatus": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllContractStatus",
+                "operationId": "getAllContractStatusUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«ContractStatus»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/contractstatus/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getContractStatusByCode",
+                "operationId": "getContractStatusByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«ContractStatus»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/customertype": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllCustomerType",
+                "operationId": "getAllCustomerTypeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«CustomerType»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/customertype/companycode": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getCompanyCode",
+                "operationId": "getCompanyCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«int»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/customertype/personcode": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getPersonCode",
+                "operationId": "getPersonCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«int»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/customertype/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getCustomerTypeByCode",
+                "operationId": "getCustomerTypeByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«CustomerType»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/debitstage": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllDebitStages",
+                "operationId": "getAllDebitStagesUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«DebitStage»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/debitstage/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getDebitStageByCode",
+                "operationId": "getDebitStageByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«DebitStage»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/child/count/{economySectionId}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomySectionChildCounts",
+                "operationId": "getEconomySectionChildCountsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "economySectionId",
+                        "in": "path",
+                        "description": "economySectionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«long»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/code/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomySectionByCode",
+                "operationId": "getEconomySectionByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EconomyTreeDto»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/full/{economySectionId}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getFullEconomySectionById",
+                "operationId": "getFullEconomySectionByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "economySectionId",
+                        "in": "path",
+                        "description": "economySectionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EconomySection»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/nextlevel/{economySectionId}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomyNexLevel",
+                "operationId": "getEconomyNexLevelUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "economySectionId",
+                        "in": "path",
+                        "description": "economySectionId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«EconomyTreeDto»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/tree/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomyTree",
+                "operationId": "getEconomyTreeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«EconomyTreeDto»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/zero/parent/{id}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getZeroLevelEconomySectionByChildCode",
+                "operationId": "getZeroLevelEconomySectionByChildCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EconomySection»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/zerolevel": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomyZeroLevel",
+                "operationId": "getEconomyZeroLevelUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«EconomyTreeDto»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/economysection/{id}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEconomySectionById",
+                "operationId": "getEconomySectionByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EconomySection»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/enactmentcenter": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllEnactmentCenters",
+                "operationId": "getAllEnactmentCentersUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«EnactmentCenter»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/enactmentcenter/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getEnactmentCenterByCode",
+                "operationId": "getEnactmentCenterByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«EnactmentCenter»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/financial/parent": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getFinancialPerEndByDateAndTypeCode",
+                "operationId": "getFinancialPerEndByDateAndTypeCodeUsingGET_1",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "financialPerTypeCode",
+                        "in": "query",
+                        "description": "financialPerTypeCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«FinancialPerEnd»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/financial/parent/prev/{date}/{type}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getPreviousFinancialPerEndByDateAndTypeCode",
+                "operationId": "getPreviousFinancialPerEndByDateAndTypeCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "type",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«FinancialPerEnd»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/holiday/between/count/{startDate}/{endDate}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "countHolidaysBetween",
+                "operationId": "countHolidaysBetweenUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "endDate",
+                        "in": "path",
+                        "description": "endDate",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "path",
+                        "description": "startDate",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«long»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/holiday/between/{startdate}/{endDate}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getHolidaysBetween",
+                "operationId": "getHolidaysBetweenUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "endDate",
+                        "in": "path",
+                        "description": "endDate",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "startdate",
+                        "in": "path",
+                        "description": "startdate",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«Holiday»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/holiday/not/first/{date}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getFirstNoneHoliday",
+                "operationId": "getFirstNoneHolidayUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "date",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«long»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/holiday/save": {
+            "post": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "سرویس درج اطلاعات پایه تعطیلات",
+                "operationId": "saveHolidaysMainInfoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "holidaysInfoDto",
+                        "description": "holidaysInfoDto",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HolidayInfoDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/holidaytype/save": {
+            "post": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "سرویس درج اطلاعات پایه انواع تعطیلات",
+                "operationId": "saveKindsOfHolidaysMainInfoUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "holidaysTypeInfo",
+                        "description": "holidaysTypeInfo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HolidayTypeCommand"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseEntity"
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/inceptionaim": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllInceptionAims",
+                "operationId": "getAllInceptionAimsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«InceptionAim»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/inceptionaim/code/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getInceptionAimIdByCode",
+                "operationId": "getInceptionAimIdByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«InceptionAim»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/inceptionaim/{id}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getInceptionAimById",
+                "operationId": "getInceptionAimByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«InceptionAim»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/paymentmethod": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllPaymentMethods",
+                "operationId": "getAllPaymentMethodsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«PaymentMethod»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/paymentmethod/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getPaymentMethodByCode",
+                "operationId": "getPaymentMethodByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«PaymentMethod»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/possessiontype": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllPossessionTypes",
+                "operationId": "getAllPossessionTypesUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«PossessionType»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/possessiontype/code/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getPossessionTypeIdByCode",
+                "operationId": "getPossessionTypeIdByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«PossessionType»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/possessiontype/{id}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getPossessionTypeById",
+                "operationId": "getPossessionTypeByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«PossessionType»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/referenceid/{systemId}/{branchId}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getReferenceId",
+                "operationId": "getReferenceIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "systemId",
+                        "in": "path",
+                        "description": "systemId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«string»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/test": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getBranchById",
+                "operationId": "getBranchByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "query",
+                        "description": "branchId",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Branch»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/usedmethod": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllUsedMethods",
+                "operationId": "getAllUsedMethodsUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«UsedMethod»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/usedmethod/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getUsedMethodBycode",
+                "operationId": "getUsedMethodBycodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«UsedMethod»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/yesorno": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getAllYesOrNos",
+                "operationId": "getAllYesOrNosUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«YesOrNo»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/lo/general/yesorno/{code}": {
+            "get": {
+                "tags": [
+                    "loan-general-controller"
+                ],
+                "summary": "getYesOrNoTitle",
+                "operationId": "getYesOrNoTitleUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "string",
+                        "format": "byte"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«YesOrNo»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "spring_oauth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/auth",
+            "tokenUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/token",
+            "flow": "accessCode"
+        }
+    },
+    "definitions": {
+        "AssuranceType": {
+            "type": "object",
+            "properties": {
+                "assuranceTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "AssuranceType"
+        },
+        "Bank": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "latinName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                }
+            },
+            "title": "Bank"
+        },
+        "Branch": {
+            "type": "object",
+            "properties": {
+                "bank": {
+                    "$ref": "#/definitions/Bank"
+                },
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                },
+                "swiftCode": {
+                    "type": "string"
+                }
+            },
+            "title": "Branch"
+        },
+        "CbiReference": {
+            "type": "object",
+            "properties": {
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "cbiRefrenceId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "createDate": {
+                    "type": "string"
+                },
+                "docNumberSeq": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sequencer": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "CbiReference"
+        },
+        "CbiReferenceCommand": {
+            "type": "object",
+            "properties": {
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "cbiRefrenceId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "createDate": {
+                    "type": "string"
+                },
+                "docNumberSeq": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sequencer": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "CbiReferenceCommand"
+        },
+        "CollateralTypes": {
+            "type": "object",
+            "properties": {
+                "codeCentralBank": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "collateralTypesCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "deactivatedUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "deactivedDate": {
+                    "type": "string"
+                },
+                "insertDate": {
+                    "type": "string"
+                },
+                "insertUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "riskRank": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "yesOrNo": {
+                    "$ref": "#/definitions/YesOrNo"
+                }
+            },
+            "title": "CollateralTypes"
+        },
+        "CommissionType": {
+            "type": "object",
+            "properties": {
+                "commissionTypesCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "wageMap": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "CommissionType"
+        },
+        "ContractStatus": {
+            "type": "object",
+            "properties": {
+                "accountDocument": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "contractStatusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "ContractStatus"
+        },
+        "CustomerType": {
+            "type": "object",
+            "properties": {
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "CustomerType"
+        },
+        "DebitStage": {
+            "type": "object",
+            "properties": {
+                "daysNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "debitStageCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "nextStageCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "DebitStage"
+        },
+        "EconomySection": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "economySectionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "parentEconomySection": {
+                    "$ref": "#/definitions/EconomySection"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "EconomySection"
+        },
+        "EconomyTreeDto": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EconomyTreeDto"
+                    }
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "economySectionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "EconomyTreeDto"
+        },
+        "EnactmentCenter": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "enactmentCenterId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "maxAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "minAmount": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "EnactmentCenter"
+        },
+        "FinancialPerEnd": {
+            "type": "object",
+            "properties": {
+                "financialPerEndDate": {
+                    "type": "string"
+                },
+                "financialPerEndId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "financialPerType": {
+                    "$ref": "#/definitions/FinancialPerType"
+                }
+            },
+            "title": "FinancialPerEnd"
+        },
+        "FinancialPerType": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "FinancialPerType"
+        },
+        "Holiday": {
+            "type": "object",
+            "properties": {
+                "hasSuborgan": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "holidayDate": {
+                    "type": "string"
+                },
+                "holidayId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "holidayType": {
+                    "$ref": "#/definitions/HolidayType"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "organId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Holiday"
+        },
+        "HolidayInfoDto": {
+            "type": "object",
+            "properties": {
+                "hasSuborgan": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "holidayDate": {
+                    "type": "string"
+                },
+                "holidayTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "organId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "HolidayInfoDto"
+        },
+        "HolidayType": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "HolidayType"
+        },
+        "HolidayTypeCommand": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "HolidayTypeCommand"
+        },
+        "InceptionAim": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "inceptionAimId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "otherAimTitleCode": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "InceptionAim"
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "locationId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "locationType": {
+                    "$ref": "#/definitions/LocationType"
+                },
+                "parentId": {
+                    "$ref": "#/definitions/Location"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Location"
+        },
+        "LocationType": {
+            "type": "object",
+            "properties": {
+                "locationTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "LocationType"
+        },
+        "Message": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Message"
+        },
+        "PaymentMethod": {
+            "type": "object",
+            "properties": {
+                "paymentMethodCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "PaymentMethod"
+        },
+        "PossessionType": {
+            "type": "object",
+            "properties": {
+                "assuranceType": {
+                    "$ref": "#/definitions/AssuranceType"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ownerOtherCode": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "possessionStatus": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "possessionTypeId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "PossessionType"
+        },
+        "ResponseEntity": {
+            "type": "object",
+            "properties": {
+                "body": {
+                    "type": "object"
+                },
+                "statusCode": {
+                    "type": "string",
+                    "enum": [
+                        "ACCEPTED",
+                        "ALREADY_REPORTED",
+                        "BAD_GATEWAY",
+                        "BAD_REQUEST",
+                        "BANDWIDTH_LIMIT_EXCEEDED",
+                        "CHECKPOINT",
+                        "CONFLICT",
+                        "CONTINUE",
+                        "CREATED",
+                        "DESTINATION_LOCKED",
+                        "EXPECTATION_FAILED",
+                        "FAILED_DEPENDENCY",
+                        "FORBIDDEN",
+                        "FOUND",
+                        "GATEWAY_TIMEOUT",
+                        "GONE",
+                        "HTTP_VERSION_NOT_SUPPORTED",
+                        "IM_USED",
+                        "INSUFFICIENT_SPACE_ON_RESOURCE",
+                        "INSUFFICIENT_STORAGE",
+                        "INTERNAL_SERVER_ERROR",
+                        "I_AM_A_TEAPOT",
+                        "LENGTH_REQUIRED",
+                        "LOCKED",
+                        "LOOP_DETECTED",
+                        "METHOD_FAILURE",
+                        "METHOD_NOT_ALLOWED",
+                        "MOVED_PERMANENTLY",
+                        "MOVED_TEMPORARILY",
+                        "MULTIPLE_CHOICES",
+                        "MULTI_STATUS",
+                        "NETWORK_AUTHENTICATION_REQUIRED",
+                        "NON_AUTHORITATIVE_INFORMATION",
+                        "NOT_ACCEPTABLE",
+                        "NOT_EXTENDED",
+                        "NOT_FOUND",
+                        "NOT_IMPLEMENTED",
+                        "NOT_MODIFIED",
+                        "NO_CONTENT",
+                        "OK",
+                        "PARTIAL_CONTENT",
+                        "PAYLOAD_TOO_LARGE",
+                        "PAYMENT_REQUIRED",
+                        "PERMANENT_REDIRECT",
+                        "PRECONDITION_FAILED",
+                        "PRECONDITION_REQUIRED",
+                        "PROCESSING",
+                        "PROXY_AUTHENTICATION_REQUIRED",
+                        "REQUESTED_RANGE_NOT_SATISFIABLE",
+                        "REQUEST_ENTITY_TOO_LARGE",
+                        "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                        "REQUEST_TIMEOUT",
+                        "REQUEST_URI_TOO_LONG",
+                        "RESET_CONTENT",
+                        "SEE_OTHER",
+                        "SERVICE_UNAVAILABLE",
+                        "SWITCHING_PROTOCOLS",
+                        "TEMPORARY_REDIRECT",
+                        "TOO_EARLY",
+                        "TOO_MANY_REQUESTS",
+                        "UNAUTHORIZED",
+                        "UNAVAILABLE_FOR_LEGAL_REASONS",
+                        "UNPROCESSABLE_ENTITY",
+                        "UNSUPPORTED_MEDIA_TYPE",
+                        "UPGRADE_REQUIRED",
+                        "URI_TOO_LONG",
+                        "USE_PROXY",
+                        "VARIANT_ALSO_NEGOTIATES"
+                    ]
+                },
+                "statusCodeValue": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "ResponseEntity"
+        },
+        "Response«AssuranceType»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/AssuranceType"
+                }
+            },
+            "title": "Response«AssuranceType»"
+        },
+        "Response«Branch»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Branch"
+                }
+            },
+            "title": "Response«Branch»"
+        },
+        "Response«CbiReferenceCommand»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/CbiReferenceCommand"
+                }
+            },
+            "title": "Response«CbiReferenceCommand»"
+        },
+        "Response«CbiReference»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/CbiReference"
+                }
+            },
+            "title": "Response«CbiReference»"
+        },
+        "Response«CollateralTypes»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/CollateralTypes"
+                }
+            },
+            "title": "Response«CollateralTypes»"
+        },
+        "Response«CommissionType»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/CommissionType"
+                }
+            },
+            "title": "Response«CommissionType»"
+        },
+        "Response«ContractStatus»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/ContractStatus"
+                }
+            },
+            "title": "Response«ContractStatus»"
+        },
+        "Response«CustomerType»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/CustomerType"
+                }
+            },
+            "title": "Response«CustomerType»"
+        },
+        "Response«DebitStage»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/DebitStage"
+                }
+            },
+            "title": "Response«DebitStage»"
+        },
+        "Response«EconomySection»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/EconomySection"
+                }
+            },
+            "title": "Response«EconomySection»"
+        },
+        "Response«EconomyTreeDto»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/EconomyTreeDto"
+                }
+            },
+            "title": "Response«EconomyTreeDto»"
+        },
+        "Response«EnactmentCenter»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/EnactmentCenter"
+                }
+            },
+            "title": "Response«EnactmentCenter»"
+        },
+        "Response«FinancialPerEnd»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/FinancialPerEnd"
+                }
+            },
+            "title": "Response«FinancialPerEnd»"
+        },
+        "Response«InceptionAim»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/InceptionAim"
+                }
+            },
+            "title": "Response«InceptionAim»"
+        },
+        "Response«List«AssuranceType»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AssuranceType"
+                    }
+                }
+            },
+            "title": "Response«List«AssuranceType»»"
+        },
+        "Response«List«CollateralTypes»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CollateralTypes"
+                    }
+                }
+            },
+            "title": "Response«List«CollateralTypes»»"
+        },
+        "Response«List«CommissionType»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CommissionType"
+                    }
+                }
+            },
+            "title": "Response«List«CommissionType»»"
+        },
+        "Response«List«ContractStatus»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContractStatus"
+                    }
+                }
+            },
+            "title": "Response«List«ContractStatus»»"
+        },
+        "Response«List«CustomerType»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CustomerType"
+                    }
+                }
+            },
+            "title": "Response«List«CustomerType»»"
+        },
+        "Response«List«DebitStage»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DebitStage"
+                    }
+                }
+            },
+            "title": "Response«List«DebitStage»»"
+        },
+        "Response«List«EconomyTreeDto»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EconomyTreeDto"
+                    }
+                }
+            },
+            "title": "Response«List«EconomyTreeDto»»"
+        },
+        "Response«List«EnactmentCenter»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EnactmentCenter"
+                    }
+                }
+            },
+            "title": "Response«List«EnactmentCenter»»"
+        },
+        "Response«List«Holiday»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Holiday"
+                    }
+                }
+            },
+            "title": "Response«List«Holiday»»"
+        },
+        "Response«List«InceptionAim»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/InceptionAim"
+                    }
+                }
+            },
+            "title": "Response«List«InceptionAim»»"
+        },
+        "Response«List«PaymentMethod»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PaymentMethod"
+                    }
+                }
+            },
+            "title": "Response«List«PaymentMethod»»"
+        },
+        "Response«List«PossessionType»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PossessionType"
+                    }
+                }
+            },
+            "title": "Response«List«PossessionType»»"
+        },
+        "Response«List«UsedMethod»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UsedMethod"
+                    }
+                }
+            },
+            "title": "Response«List«UsedMethod»»"
+        },
+        "Response«List«YesOrNo»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/YesOrNo"
+                    }
+                }
+            },
+            "title": "Response«List«YesOrNo»»"
+        },
+        "Response«PaymentMethod»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/PaymentMethod"
+                }
+            },
+            "title": "Response«PaymentMethod»"
+        },
+        "Response«PossessionType»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/PossessionType"
+                }
+            },
+            "title": "Response«PossessionType»"
+        },
+        "Response«UsedMethod»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/UsedMethod"
+                }
+            },
+            "title": "Response«UsedMethod»"
+        },
+        "Response«YesOrNo»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/YesOrNo"
+                }
+            },
+            "title": "Response«YesOrNo»"
+        },
+        "Response«int»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "title": "Response«int»"
+        },
+        "Response«long»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "Response«long»"
+        },
+        "Response«string»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "string"
+                }
+            },
+            "title": "Response«string»"
+        },
+        "Status": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Status"
+        },
+        "UsedMethod": {
+            "type": "object",
+            "properties": {
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "usedMethodCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "yesOrNo": {
+                    "$ref": "#/definitions/YesOrNo"
+                }
+            },
+            "title": "UsedMethod"
+        },
+        "YesOrNo": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "yesOrNoCode": {
+                    "type": "string",
+                    "format": "byte"
+                }
+            },
+            "title": "YesOrNo"
+        }
+    }
+}

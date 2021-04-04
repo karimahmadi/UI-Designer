@@ -1,0 +1,1414 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "سرویسهای عمومی",
+        "version": "1.0.1",
+        "title": "سرویس های عمومی"
+    },
+    "host": "192.168.101.171",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "general-controller",
+            "description": "سرویس های عمومی"
+        },
+        {
+            "name": "ident-controller",
+            "description": "سرویس ثبت احوال"
+        }
+    ],
+    "paths": {
+        "/rest/general/bank": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات بانک ها",
+                "operationId": "getAllBankUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«Bank»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/bank/branch/{branchId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات بانک با شناسه شعبه",
+                "operationId": "getBankByBranchIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Bank»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/bank/code/{bankCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات بانک با کد",
+                "operationId": "getBankByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankCode",
+                        "in": "path",
+                        "description": "bankCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Bank»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/bank/except/{bankId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات بانک ها به جز شناسه مورد  نظر",
+                "operationId": "getAllBankExceptIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankId",
+                        "in": "path",
+                        "description": "bankId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«Bank»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/bank/{bankId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات بانک با شناسه",
+                "operationId": "getBankByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankId",
+                        "in": "path",
+                        "description": "bankId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Bank»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/bank/code/{bankCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getBranchesByCodesAndBankCode",
+                "operationId": "getBranchesByCodesAndBankCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankCode",
+                        "in": "path",
+                        "description": "bankCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "branchCodes",
+                        "in": "query",
+                        "description": "branchCodes",
+                        "required": true,
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«Branch»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/code/{branchCode}/bank/{bankId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات شعبه با کد و شناسه بانک",
+                "operationId": "getBranchByCodeAndBankIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankId",
+                        "in": "path",
+                        "description": "bankId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "branchCode",
+                        "in": "path",
+                        "description": "branchCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Branch»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/info/branch/code/{branchCode}/bank/{bankId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getBranchInfoByBranchCodeAndBankId",
+                "operationId": "getBranchInfoByBranchCodeAndBankIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "bankId",
+                        "in": "path",
+                        "description": "bankId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "branchCode",
+                        "in": "path",
+                        "description": "branchCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«BranchInfo»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/info/region/code/{regionCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getBranchInfoByRegionCode",
+                "operationId": "getBranchInfoByRegionCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "regionCode",
+                        "in": "path",
+                        "description": "regionCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«BranchInfo»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/info/{branchId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات شعبه",
+                "operationId": "getBranchInfoByBranchIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«BranchInfo»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/swiftcode/{swiftCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات شعبه با کد سوئیفت",
+                "operationId": "getBranchBySwiftCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "swiftCode",
+                        "in": "path",
+                        "description": "swiftCode",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Branch»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branch/{branchId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات شعبه با شناسه",
+                "operationId": "getBranchByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Branch»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/branchaccount/branch/{branchId}/accounttype/code/{accountTypeCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات حساب شعبه با شناسه شعبه و نوع حساب",
+                "operationId": "getBranchAccountByAccountTypeCodeAndBranchIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "accountTypeCode",
+                        "in": "path",
+                        "description": "accountTypeCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "branchId",
+                        "in": "path",
+                        "description": "branchId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«BranchAccount»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/ident/company/{legalId}": {
+            "get": {
+                "tags": [
+                    "ident-controller"
+                ],
+                "summary": "بازیابی شرکت",
+                "operationId": "getCompanyUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "legalId",
+                        "in": "path",
+                        "description": "legalId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Person»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/ident/person/{nationalId}": {
+            "get": {
+                "tags": [
+                    "ident-controller"
+                ],
+                "summary": "بازیابی اطلاعات شخص با شماره ملی",
+                "operationId": "getPersonUsingGET_1",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "nationalId",
+                        "in": "path",
+                        "description": "nationalId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Person»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/ident/person/{nationalId}/registerDate/{registerDate}": {
+            "get": {
+                "tags": [
+                    "ident-controller"
+                ],
+                "summary": "بازیابی اطلاعات شخص با شماره ملی و تاریخ",
+                "operationId": "getPersonUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "nationalId",
+                        "in": "path",
+                        "description": "nationalId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "registerDate",
+                        "in": "path",
+                        "description": "registerDate",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Person»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/location/code/{code}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات محل با کد",
+                "operationId": "getLocationByCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Location»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/location/{locationId}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی اطلاعات محل",
+                "operationId": "getSimpleLocationByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "locationId",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«Location»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/region/code/{regionCode}": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getRegionByRegionCode",
+                "operationId": "getRegionByRegionCodeUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "regionCode",
+                        "in": "path",
+                        "description": "regionCode",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«BranchInfo»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/region/count": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getTotalRegionCount",
+                "operationId": "getTotalRegionCountUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«long»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/region/list": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "getRegionGrid",
+                "operationId": "getRegionGridUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "size",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«BranchInfo»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        },
+        "/rest/general/status": {
+            "get": {
+                "tags": [
+                    "general-controller"
+                ],
+                "summary": "بازیابی وضعیت ها",
+                "operationId": "getAllStatusUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response«List«Status»»"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "spring_oauth": []
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "spring_oauth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/auth",
+            "tokenUrl": "http://192.168.100.111/auth/realms/Test-Realm/protocol/openid-connect/token",
+            "flow": "accessCode"
+        }
+    },
+    "definitions": {
+        "Bank": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "latinName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                }
+            },
+            "title": "Bank"
+        },
+        "Branch": {
+            "type": "object",
+            "properties": {
+                "bank": {
+                    "$ref": "#/definitions/Bank"
+                },
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "location": {
+                    "$ref": "#/definitions/Location"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                },
+                "swiftCode": {
+                    "type": "string"
+                }
+            },
+            "title": "Branch"
+        },
+        "BranchAccount": {
+            "type": "object",
+            "properties": {
+                "accountNumber": {
+                    "type": "string"
+                },
+                "accountTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "branch": {
+                    "$ref": "#/definitions/Branch"
+                },
+                "branchAccountId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "BranchAccount"
+        },
+        "BranchInfo": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "branch": {
+                    "$ref": "#/definitions/Branch"
+                },
+                "branchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "branchName": {
+                    "type": "string"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "regionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "telephone1": {
+                    "type": "string"
+                },
+                "telephone2": {
+                    "type": "string"
+                }
+            },
+            "title": "BranchInfo"
+        },
+        "LegalPerson": {
+            "type": "object",
+            "properties": {
+                "companyName": {
+                    "type": "string"
+                }
+            },
+            "title": "LegalPerson"
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "lastChangeDate": {
+                    "type": "string"
+                },
+                "lastChangeUserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "locationId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "locationType": {
+                    "$ref": "#/definitions/LocationType"
+                },
+                "parentId": {
+                    "$ref": "#/definitions/Location"
+                },
+                "status": {
+                    "$ref": "#/definitions/Status"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Location"
+        },
+        "LocationType": {
+            "type": "object",
+            "properties": {
+                "locationTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "LocationType"
+        },
+        "Message": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Message"
+        },
+        "Person": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "customerTypeCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "legalPerson": {
+                    "$ref": "#/definitions/LegalPerson"
+                },
+                "nationalId": {
+                    "type": "string"
+                },
+                "realPerson": {
+                    "$ref": "#/definitions/RealPerson"
+                },
+                "registerDate": {
+                    "type": "string"
+                },
+                "registerNumber": {
+                    "type": "string"
+                }
+            },
+            "title": "Person"
+        },
+        "RealPerson": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string",
+                    "format": "byte"
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            },
+            "title": "RealPerson"
+        },
+        "Response«Bank»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Bank"
+                }
+            },
+            "title": "Response«Bank»"
+        },
+        "Response«BranchAccount»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/BranchAccount"
+                }
+            },
+            "title": "Response«BranchAccount»"
+        },
+        "Response«BranchInfo»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/BranchInfo"
+                }
+            },
+            "title": "Response«BranchInfo»"
+        },
+        "Response«Branch»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Branch"
+                }
+            },
+            "title": "Response«Branch»"
+        },
+        "Response«List«Bank»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Bank"
+                    }
+                }
+            },
+            "title": "Response«List«Bank»»"
+        },
+        "Response«List«BranchInfo»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BranchInfo"
+                    }
+                }
+            },
+            "title": "Response«List«BranchInfo»»"
+        },
+        "Response«List«Branch»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Branch"
+                    }
+                }
+            },
+            "title": "Response«List«Branch»»"
+        },
+        "Response«List«Status»»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Status"
+                    }
+                }
+            },
+            "title": "Response«List«Status»»"
+        },
+        "Response«Location»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Location"
+                }
+            },
+            "title": "Response«Location»"
+        },
+        "Response«Person»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "$ref": "#/definitions/Person"
+                }
+            },
+            "title": "Response«Person»"
+        },
+        "Response«long»": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "$ref": "#/definitions/Message"
+                },
+                "response": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "Response«long»"
+        },
+        "Status": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Status"
+        }
+    }
+}
