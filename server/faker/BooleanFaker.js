@@ -13,10 +13,3 @@ const BooleanFaker = {
 };
 
 module.exports = BooleanFaker;
-
-
-/*
-*   function genBooleanValue() {
-    return Math.random() < 0.5;
-  }
-  */

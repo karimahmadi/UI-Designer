@@ -8,15 +8,6 @@ const NumberFaker = {
     this.options = options;
   },
   getValue(key) {
-    return Math.floor(1 + Math.random() * 100) * 1;
-  },
-};
-
-module.exports = NumberFaker;
-
-
-/*
-*   function genIntegerValue(key) {
     let maxNumber = 100;
     let minNumber = 1;
     let factor = 1;
@@ -35,5 +26,7 @@ module.exports = NumberFaker;
     }
 
     return Math.floor(minNumber + Math.random() * maxNumber) * factor;
-  }
-  */
+  },
+};
+
+module.exports = NumberFaker;
